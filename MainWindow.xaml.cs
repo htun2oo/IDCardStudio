@@ -22,31 +22,31 @@ namespace IDCardStudio
                 // 2. Workspace အား ပေါ်လာစေခြင်း
                 WorkspaceGrid.Visibility = Visibility.Visible;
 
-                // 3. Sub-window များ ရွေးချယ်မှုအလိုက် ပေါ်/ဖျောက် ပြုလုပ်ခြင်း
+                // 3. Checkbox ရွေးချယ်မှုအလိုက် Window များကို ပေါ်/ဖျောက် ပြုလုပ်ခြင်း
                 ProductionFormWindow.Visibility = dialog.IncludeProductionForm ? Visibility.Visible : Visibility.Collapsed;
                 CardDesignWindow.Visibility = dialog.IncludeCardDesign ? Visibility.Visible : Visibility.Collapsed;
                 ReportDesignWindow.Visibility = dialog.IncludeReportDesign ? Visibility.Visible : Visibility.Collapsed;
 
-                // 4. Landscape / Portrait အလိုက် Card Canvas Size ညှိပေးခြင်း
+                // 4. Landscape / Portrait အလိုက် Card Front & Back Canvas Size ပြောင်းလဲပေးခြင်း
                 if (dialog.IncludeCardDesign)
                 {
                     if (dialog.IsLandscape)
                     {
-                        CardFrontCanvas.Width = 240;
-                        CardFrontCanvas.Height = 150;
-                        CardBackCanvas.Width = 240;
-                        CardBackCanvas.Height = 150;
+                        CardFrontCanvas.Width = 220;
+                        CardFrontCanvas.Height = 140;
+                        CardBackCanvas.Width = 220;
+                        CardBackCanvas.Height = 140;
                     }
                     else
                     {
-                        CardFrontCanvas.Width = 150;
-                        CardFrontCanvas.Height = 240;
-                        CardBackCanvas.Width = 150;
-                        CardBackCanvas.Height = 240;
+                        CardFrontCanvas.Width = 140;
+                        CardFrontCanvas.Height = 220;
+                        CardBackCanvas.Width = 140;
+                        CardBackCanvas.Height = 220;
                     }
                 }
 
-                // 5. Menu Bar များ Enable/Visible ပြုလုပ်ခြင်း
+                // 5. Menu Bar များ Visible ပြုလုပ်ခြင်း
                 EditMenu.Visibility = Visibility.Visible;
                 InsertMenu.Visibility = Visibility.Visible;
                 FormatMenu.Visibility = Visibility.Visible;
