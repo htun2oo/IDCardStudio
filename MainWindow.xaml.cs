@@ -12,7 +12,7 @@ namespace IDCardStudio
         private void NewProject_Click(object sender, RoutedEventArgs e)
         {
             NewProjectWindow dialog = new NewProjectWindow();
-            dialog.Owner = this; // Dialog ကို MainWindow ၏ အလယ်တွင် ပေါ်စေရန်
+            dialog.Owner = this;
             dialog.ShowDialog();
         }
 
