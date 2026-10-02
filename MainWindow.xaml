@@ -54,13 +54,20 @@
 
                 <!-- 1. Production Form Window -->
                 <Border x:Name="ProductionFormWindow" Grid.Column="0" Margin="2" Background="#D4D0C8" BorderBrush="#808080" BorderThickness="1" Visibility="Collapsed">
-                    <DockPanel>
-                        <!-- Title Bar -->
-                        <Border DockPanel.Dock="Top" Background="#000080" Height="22" Padding="4,2">
-                            <TextBlock Text="Production Form" Foreground="White" FontWeight="Bold" FontSize="11"/>
+                    <DockPanel x:Name="ProductionFormDock">
+                        <!-- Title Bar with Minimize, Maximize, Close -->
+                        <Border DockPanel.Dock="Top" Background="#000080" Height="22" Padding="4,0,2,0">
+                            <Grid>
+                                <TextBlock Text="Production Form" Foreground="White" FontWeight="Bold" FontSize="11" VerticalAlignment="Center"/>
+                                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                                    <Button x:Name="btnMinProduction" Content="_" Width="16" Height="16" Margin="1" FontSize="9" Padding="0,-4,0,0" Click="btnMinProduction_Click"/>
+                                    <Button x:Name="btnMaxProduction" Content="□" Width="16" Height="16" Margin="1" FontSize="9" Padding="0,-2,0,0" Click="btnMaxProduction_Click"/>
+                                    <Button x:Name="btnCloseProduction" Content="X" Width="16" Height="16" Margin="1" FontSize="9" FontWeight="Bold" Click="btnCloseProduction_Click"/>
+                                </StackPanel>
+                            </Grid>
                         </Border>
                         <!-- Form Content Area -->
-                        <Grid Background="White" Margin="4"/>
+                        <Grid x:Name="ProductionFormContent" Background="White" Margin="4"/>
                     </DockPanel>
                 </Border>
 
@@ -81,12 +88,19 @@
                         </Grid.ColumnDefinitions>
 
                         <!-- Card Front Window -->
-                        <Border Grid.Column="0" Margin="2" Background="#D4D0C8" BorderBrush="#808080" BorderThickness="1">
+                        <Border x:Name="CardFrontWindow" Grid.Column="0" Margin="2" Background="#D4D0C8" BorderBrush="#808080" BorderThickness="1">
                             <DockPanel>
-                                <Border DockPanel.Dock="Top" Background="#000080" Height="22" Padding="4,2">
-                                    <TextBlock Text="Card" Foreground="White" FontWeight="Bold" FontSize="11"/>
+                                <Border DockPanel.Dock="Top" Background="#000080" Height="22" Padding="4,0,2,0">
+                                    <Grid>
+                                        <TextBlock Text="Card" Foreground="White" FontWeight="Bold" FontSize="11" VerticalAlignment="Center"/>
+                                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                                            <Button x:Name="btnMinCardFront" Content="_" Width="16" Height="16" Margin="1" FontSize="9" Padding="0,-4,0,0" Click="btnMinCardFront_Click"/>
+                                            <Button x:Name="btnMaxCardFront" Content="□" Width="16" Height="16" Margin="1" FontSize="9" Padding="0,-2,0,0" Click="btnMaxCardFront_Click"/>
+                                            <Button x:Name="btnCloseCardFront" Content="X" Width="16" Height="16" Margin="1" FontSize="9" FontWeight="Bold" Click="btnCloseCardFront_Click"/>
+                                        </StackPanel>
+                                    </Grid>
                                 </Border>
-                                <Border Background="#A0A0A0" Padding="10">
+                                <Border x:Name="CardFrontContent" Background="#A0A0A0" Padding="10">
                                     <Border x:Name="CardFrontCanvas" Width="220" Height="140" Background="White" BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Center" VerticalAlignment="Center">
                                         <TextBlock Text="[ Card Front ]" Foreground="Gray" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                                     </Border>
@@ -95,12 +109,19 @@
                         </Border>
 
                         <!-- Card Back Window -->
-                        <Border Grid.Column="1" Margin="2" Background="#D4D0C8" BorderBrush="#808080" BorderThickness="1">
+                        <Border x:Name="CardBackWindow" Grid.Column="1" Margin="2" Background="#D4D0C8" BorderBrush="#808080" BorderThickness="1">
                             <DockPanel>
-                                <Border DockPanel.Dock="Top" Background="#000080" Height="22" Padding="4,2">
-                                    <TextBlock Text="Card (back side)" Foreground="White" FontWeight="Bold" FontSize="11"/>
+                                <Border DockPanel.Dock="Top" Background="#000080" Height="22" Padding="4,0,2,0">
+                                    <Grid>
+                                        <TextBlock Text="Card (back side)" Foreground="White" FontWeight="Bold" FontSize="11" VerticalAlignment="Center"/>
+                                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                                            <Button x:Name="btnMinCardBack" Content="_" Width="16" Height="16" Margin="1" FontSize="9" Padding="0,-4,0,0" Click="btnMinCardBack_Click"/>
+                                            <Button x:Name="btnMaxCardBack" Content="□" Width="16" Height="16" Margin="1" FontSize="9" Padding="0,-2,0,0" Click="btnMaxCardBack_Click"/>
+                                            <Button x:Name="btnCloseCardBack" Content="X" Width="16" Height="16" Margin="1" FontSize="9" FontWeight="Bold" Click="btnCloseCardBack_Click"/>
+                                        </StackPanel>
+                                    </Grid>
                                 </Border>
-                                <Border Background="#A0A0A0" Padding="10">
+                                <Border x:Name="CardBackContent" Background="#A0A0A0" Padding="10">
                                     <Border x:Name="CardBackCanvas" Width="220" Height="140" Background="White" BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Center" VerticalAlignment="Center">
                                         <TextBlock Text="[ Card Back ]" Foreground="Gray" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                                     </Border>
@@ -112,10 +133,17 @@
                     <!-- Report Design Window -->
                     <Border Grid.Row="1" x:Name="ReportDesignWindow" Margin="2" Background="#D4D0C8" BorderBrush="#808080" BorderThickness="1" Visibility="Collapsed">
                         <DockPanel>
-                            <Border DockPanel.Dock="Top" Background="#000080" Height="22" Padding="4,2">
-                                <TextBlock Text="Report Design" Foreground="White" FontWeight="Bold" FontSize="11"/>
+                            <Border DockPanel.Dock="Top" Background="#000080" Height="22" Padding="4,0,2,0">
+                                <Grid>
+                                    <TextBlock Text="Report Design" Foreground="White" FontWeight="Bold" FontSize="11" VerticalAlignment="Center"/>
+                                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                                        <Button x:Name="btnMinReport" Content="_" Width="16" Height="16" Margin="1" FontSize="9" Padding="0,-4,0,0" Click="btnMinReport_Click"/>
+                                        <Button x:Name="btnMaxReport" Content="□" Width="16" Height="16" Margin="1" FontSize="9" Padding="0,-2,0,0" Click="btnMaxReport_Click"/>
+                                        <Button x:Name="btnCloseReport" Content="X" Width="16" Height="16" Margin="1" FontSize="9" FontWeight="Bold" Click="btnCloseReport_Click"/>
+                                    </StackPanel>
+                                </Grid>
                             </Border>
-                            <Grid Background="White" Margin="4"/>
+                            <Grid x:Name="ReportContent" Background="White" Margin="4"/>
                         </DockPanel>
                     </Border>
                 </Grid>
