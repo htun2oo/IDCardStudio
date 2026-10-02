@@ -9,18 +9,36 @@
     <DockPanel>
         <!-- Menu Bar -->
         <Menu DockPanel.Dock="Top" Background="#F0F0F0" Padding="2">
+            <!-- File Menu -->
             <MenuItem Header="_File">
                 <MenuItem Header="_New Project..." Click="NewProject_Click"/>
+                <MenuItem Header="_Open Project..." Click="OpenProject_Click"/>
+                <MenuItem Header="_Recent Projects">
+                    <MenuItem Header="(No Recent Projects)" IsEnabled="False"/>
+                </MenuItem>
                 <Separator/>
                 <MenuItem x:Name="SaveMenuItem" Header="_Save" IsEnabled="False"/>
                 <MenuItem x:Name="SaveAsMenuItem" Header="Save _As..." IsEnabled="False"/>
                 <Separator/>
-                <MenuItem Header="E_xit"/>
+                <MenuItem Header="E_xit" Click="Exit_Click"/>
             </MenuItem>
+
+            <!-- Edit Menu -->
             <MenuItem x:Name="EditMenu" Header="_Edit" Visibility="Collapsed"/>
+
+            <!-- View Menu -->
+            <MenuItem x:Name="ViewMenu" Header="_View"/>
+
+            <!-- Insert Menu -->
             <MenuItem x:Name="InsertMenu" Header="_Insert" Visibility="Collapsed"/>
+
+            <!-- Format Menu -->
             <MenuItem x:Name="FormatMenu" Header="F_ormat" Visibility="Collapsed"/>
+
+            <!-- Window Menu -->
             <MenuItem x:Name="WindowMenu" Header="_Window" Visibility="Collapsed"/>
+
+            <!-- Help Menu -->
             <MenuItem Header="_Help"/>
         </Menu>
 
@@ -35,28 +53,48 @@
                 <!-- Production Form Window -->
                 <Border x:Name="ProductionFormWindow" Grid.Column="0" Margin="3" Background="#D4D0C8" BorderBrush="#FFFFFF" BorderThickness="1,1,2,2" Visibility="Collapsed">
                     <Grid>
-                        <TextBlock Text="Production Form" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                        <TextBlock Text="Production Form Design" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Bold"/>
                     </Grid>
                 </Border>
 
-                <!-- Right Container -->
+                <!-- Right Container (Card Design & Report Design) -->
                 <Grid Grid.Column="1">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="*" />
                         <RowDefinition Height="*" />
                     </Grid.RowDefinitions>
 
-                    <!-- Card Design Window -->
-                    <Grid x:Name="CardDesignWindow" Grid.Row="0" Visibility="Collapsed">
-                        <Border Margin="3" Background="#D4D0C8" BorderBrush="#FFFFFF" BorderThickness="1,1,2,2">
-                            <TextBlock Text="Card Design" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-                        </Border>
-                    </Grid>
+                    <!-- Card Design Window (Front & Back Side Tabs) -->
+                    <Border x:Name="CardDesignWindow" Grid.Row="0" Margin="3" Background="#D4D0C8" BorderBrush="#FFFFFF" BorderThickness="1,1,2,2" Visibility="Collapsed">
+                        <DockPanel>
+                            <Border DockPanel.Dock="Top" Background="#000080" Height="22" Padding="5,2">
+                                <TextBlock Text="Card Design" Foreground="White" FontWeight="Bold" FontSize="11"/>
+                            </Border>
+                            <TabControl Margin="5" Background="#D4D0C8">
+                                <!-- Front Side Tab -->
+                                <TabItem Header="Front Side">
+                                    <Grid Background="#A0A0A0">
+                                        <Border x:Name="CardFrontCanvas" Width="240" Height="150" Background="White" BorderBrush="Black" BorderThickness="1" VerticalAlignment="Center" HorizontalAlignment="Center">
+                                            <TextBlock Text="[ Card Front Side ]" Foreground="Gray" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                        </Border>
+                                    </Grid>
+                                </TabItem>
+                                <!-- Back Side Tab -->
+                                <TabItem Header="Back Side">
+                                    <Grid Background="#A0A0A0">
+                                        <Border x:Name="CardBackCanvas" Width="240" Height="150" Background="White" BorderBrush="Black" BorderThickness="1" VerticalAlignment="Center" HorizontalAlignment="Center">
+                                            <TextBlock Text="[ Card Back Side ]" Foreground="Gray" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                        </Border>
+                                    </Grid>
+                                </TabItem>
+                            </TabControl>
+                        </DockPanel>
+                    </Border>
 
                     <!-- Report Design Window -->
                     <Border x:Name="ReportDesignWindow" Grid.Row="1" Margin="3" Background="#D4D0C8" BorderBrush="#FFFFFF" BorderThickness="1,1,2,2" Visibility="Collapsed">
                         <Grid>
-                            <TextBlock Text="Report Design" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                            <TextBlock Text="Report Design" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Bold"/>
                         </Grid>
                     </Border>
                 </Grid>
