@@ -143,12 +143,12 @@
                 </Grid>
             </Grid>
 
-            <!-- Bottom Minimized Windows Dock Container (Image 1 Style) -->
+            <!-- Bottom Minimized Windows Dock Container -->
             <StackPanel Grid.Row="1" x:Name="MinimizedBar" Orientation="Horizontal" VerticalAlignment="Bottom" Height="26" Margin="2,0,2,2">
                 
                 <!-- Minimized Production Form -->
                 <Border x:Name="minProdWindow" Width="160" Height="24" Background="#D4D0C8" BorderBrush="#808080" BorderThickness="1" Margin="0,0,2,0" Visibility="Collapsed">
-                    <Grid Padding="2,0">
+                    <Grid Margin="2,0">
                         <TextBlock Text="Production Form" FontSize="11" VerticalAlignment="Center" Margin="2,0,0,0"/>
                         <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
                             <Button Content="❐" Width="16" Height="16" FontSize="8" Margin="1" Click="btnRestoreProduction_Click"/>
@@ -160,7 +160,7 @@
 
                 <!-- Minimized Card Front -->
                 <Border x:Name="minCardFrontWindow" Width="160" Height="24" Background="#D4D0C8" BorderBrush="#808080" BorderThickness="1" Margin="0,0,2,0" Visibility="Collapsed">
-                    <Grid Padding="2,0">
+                    <Grid Margin="2,0">
                         <TextBlock Text="Card" FontSize="11" VerticalAlignment="Center" Margin="2,0,0,0"/>
                         <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
                             <Button Content="❐" Width="16" Height="16" FontSize="8" Margin="1" Click="btnRestoreCardFront_Click"/>
@@ -172,7 +172,7 @@
 
                 <!-- Minimized Card Back -->
                 <Border x:Name="minCardBackWindow" Width="160" Height="24" Background="#D4D0C8" BorderBrush="#808080" BorderThickness="1" Margin="0,0,2,0" Visibility="Collapsed">
-                    <Grid Padding="2,0">
+                    <Grid Margin="2,0">
                         <TextBlock Text="Card (back side)" FontSize="11" VerticalAlignment="Center" Margin="2,0,0,0"/>
                         <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
                             <Button Content="❐" Width="16" Height="16" FontSize="8" Margin="1" Click="btnRestoreCardBack_Click"/>
@@ -184,7 +184,7 @@
 
                 <!-- Minimized Report Design -->
                 <Border x:Name="minReportWindow" Width="160" Height="24" Background="#D4D0C8" BorderBrush="#808080" BorderThickness="1" Margin="0,0,2,0" Visibility="Collapsed">
-                    <Grid Padding="2,0">
+                    <Grid Margin="2,0">
                         <TextBlock Text="Report Design" FontSize="11" VerticalAlignment="Center" Margin="2,0,0,0"/>
                         <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
                             <Button Content="❐" Width="16" Height="16" FontSize="8" Margin="1" Click="btnRestoreReport_Click"/>
