@@ -9,9 +9,9 @@ namespace IDCardStudio
             InitializeComponent();
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void MenuItem_Exit_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("ID Card Studio App is running successfully!", "ID Card Studio", MessageBoxButton.OK, MessageBoxImage.Information);
+            Application.Current.Shutdown();
         }
     }
 }
