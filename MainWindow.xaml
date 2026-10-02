@@ -86,11 +86,11 @@
                                 <Border DockPanel.Dock="Top" Background="#000080" Height="22" Padding="4,2">
                                     <TextBlock Text="Card" Foreground="White" FontWeight="Bold" FontSize="11"/>
                                 </Border>
-                                <Grid Background="#A0A0A0" Padding="10">
+                                <Border Background="#A0A0A0" Padding="10">
                                     <Border x:Name="CardFrontCanvas" Width="220" Height="140" Background="White" BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Center" VerticalAlignment="Center">
                                         <TextBlock Text="[ Card Front ]" Foreground="Gray" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                                     </Border>
-                                </Grid>
+                                </Border>
                             </DockPanel>
                         </Border>
 
@@ -100,11 +100,11 @@
                                 <Border DockPanel.Dock="Top" Background="#000080" Height="22" Padding="4,2">
                                     <TextBlock Text="Card (back side)" Foreground="White" FontWeight="Bold" FontSize="11"/>
                                 </Border>
-                                <Grid Background="#A0A0A0" Padding="10">
+                                <Border Background="#A0A0A0" Padding="10">
                                     <Border x:Name="CardBackCanvas" Width="220" Height="140" Background="White" BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Center" VerticalAlignment="Center">
                                         <TextBlock Text="[ Card Back ]" Foreground="Gray" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                                     </Border>
-                                </Grid>
+                                </Border>
                             </DockPanel>
                         </Border>
                     </Grid>
