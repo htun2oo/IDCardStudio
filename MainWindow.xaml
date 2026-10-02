@@ -6,6 +6,19 @@
         WindowStartupLocation="CenterScreen"
         Background="#808080">
 
+    <Window.Resources>
+        <!-- MDI Sub-Window Header Gradient -->
+        <LinearGradientBrush x:Key="ActiveTitleBarBrush" StartPoint="0,0" EndPoint="1,0">
+            <GradientStop Color="#005A9E" Offset="0.0" />
+            <GradientStop Color="#A6C8E0" Offset="1.0" />
+        </LinearGradientBrush>
+
+        <LinearGradientBrush x:Key="SubTitleBarBrush" StartPoint="0,0" EndPoint="1,0">
+            <GradientStop Color="#A0B2C6" Offset="0.0" />
+            <GradientStop Color="#CBD7E6" Offset="1.0" />
+        </LinearGradientBrush>
+    </Window.Resources>
+
     <DockPanel LastChildFill="True">
 
         <!-- Top Menu Bar -->
@@ -20,7 +33,7 @@
                 <MenuItem Header="Exit" Click="MenuItem_Exit_Click" />
             </MenuItem>
 
-            <!-- Edit Menu (Project ပွင့်မှ ပေါ်မည်) -->
+            <!-- Edit Menu -->
             <MenuItem x:Name="EditMenu" Header="_Edit" Visibility="Collapsed">
                 <MenuItem Header="Undo" InputGestureText="Ctrl+Z" />
                 <MenuItem Header="Redo" InputGestureText="Ctrl+Y" />
@@ -41,7 +54,7 @@
                 </MenuItem>
             </MenuItem>
 
-            <!-- Insert Menu (Project ပွင့်မှ ပေါ်မည်) -->
+            <!-- Insert Menu -->
             <MenuItem x:Name="InsertMenu" Header="_Insert" Visibility="Collapsed">
                 <MenuItem Header="Text Field" />
                 <MenuItem Header="Image Field" />
@@ -49,7 +62,7 @@
                 <MenuItem Header="Shape" />
             </MenuItem>
 
-            <!-- Format Menu (Project ပွင့်မှ ပေါ်မည်) -->
+            <!-- Format Menu -->
             <MenuItem x:Name="FormatMenu" Header="F_ormat" Visibility="Collapsed">
                 <MenuItem Header="Font..." />
                 <MenuItem Header="Alignment" />
@@ -62,7 +75,7 @@
                 <MenuItem Header="Options..." />
             </MenuItem>
 
-            <!-- Window Menu (Project ပွင့်မှ ပေါ်မည်) -->
+            <!-- Window Menu -->
             <MenuItem x:Name="WindowMenu" Header="_Window" Visibility="Collapsed">
                 <MenuItem Header="Cascade" />
                 <MenuItem Header="Tile Horizontally" />
@@ -116,8 +129,8 @@
             </StatusBarItem>
         </StatusBar>
 
-        <!-- Work Area Grid -->
-        <Grid Background="#808080" Margin="6">
+        <!-- Work Area Container -->
+        <Grid Background="#7F7F7F" Margin="4">
             <Grid x:Name="WorkspaceGrid" Visibility="Collapsed">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*" />
@@ -125,22 +138,25 @@
                 </Grid.ColumnDefinitions>
 
                 <!-- Left Window: Production Form -->
-                <Border Grid.Column="0" Margin="4" Background="#E0E0E0" BorderBrush="#707070" BorderThickness="1">
+                <Border Grid.Column="0" Margin="3" Background="#D4D0C8" BorderBrush="#FFFFFF" BorderThickness="1,1,2,2">
                     <DockPanel HorizontalAlignment="Stretch">
-                        <Border DockPanel.Dock="Top" Background="#B4C6E7" Padding="4,2">
+                        <!-- MDI Window TitleBar -->
+                        <Border DockPanel.Dock="Top" Background="{StaticResource SubTitleBarBrush}" Padding="3,2">
                             <Grid>
-                                <StackPanel Orientation="Horizontal">
-                                    <TextBlock Text="📄" Margin="0,0,5,0" FontSize="11"/>
+                                <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                                    <TextBlock Text="📄" Margin="2,0,5,0" FontSize="10"/>
                                     <TextBlock Text="Production Form" FontWeight="Bold" FontSize="11" Foreground="#000000"/>
                                 </StackPanel>
                                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
-                                    <Button Content="_" Width="16" Height="14" Margin="1,0" FontSize="8"/>
-                                    <Button Content="□" Width="16" Height="14" Margin="1,0" FontSize="8"/>
-                                    <Button Content="✕" Width="16" Height="14" Margin="1,0" FontSize="8"/>
+                                    <Button Content="-" Width="16" Height="14" Margin="1,0" FontSize="9" Background="#E0E0E0"/>
+                                    <Button Content="□" Width="16" Height="14" Margin="1,0" FontSize="8" Background="#E0E0E0"/>
+                                    <Button Content="✕" Width="16" Height="14" Margin="1,0" FontSize="9" Background="#E0E0E0"/>
                                 </StackPanel>
                             </Grid>
                         </Border>
-                        <Border Background="White" Margin="2">
+
+                        <!-- Window Client Area -->
+                        <Border Background="White" Margin="2" BorderBrush="#808080" BorderThickness="1">
                             <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
                                 <Canvas Background="White"/>
                             </ScrollViewer>
@@ -148,7 +164,7 @@
                     </DockPanel>
                 </Border>
 
-                <!-- Right Side Windows Stack -->
+                <!-- Right Side Windows Container -->
                 <Grid Grid.Column="1">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="*" />
@@ -163,68 +179,68 @@
                         </Grid.ColumnDefinitions>
 
                         <!-- Card (Front) Window -->
-                        <Border Grid.Column="0" Margin="2" Background="#E0E0E0" BorderBrush="#707070" BorderThickness="1">
+                        <Border Grid.Column="0" Margin="3" Background="#D4D0C8" BorderBrush="#FFFFFF" BorderThickness="1,1,2,2">
                             <DockPanel>
-                                <Border DockPanel.Dock="Top" Background="#B4C6E7" Padding="4,2">
+                                <Border DockPanel.Dock="Top" Background="{StaticResource SubTitleBarBrush}" Padding="3,2">
                                     <Grid>
-                                        <StackPanel Orientation="Horizontal">
-                                            <TextBlock Text="🎴" Margin="0,0,5,0" FontSize="11"/>
-                                            <TextBlock Text="Card" FontWeight="Bold" FontSize="11"/>
+                                        <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                                            <TextBlock Text="🎴" Margin="2,0,5,0" FontSize="10"/>
+                                            <TextBlock Text="Card" FontWeight="Bold" FontSize="11" Foreground="#000000"/>
                                         </StackPanel>
                                         <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
-                                            <Button Content="_" Width="16" Height="14" Margin="1,0" FontSize="8"/>
-                                            <Button Content="□" Width="16" Height="14" Margin="1,0" FontSize="8"/>
-                                            <Button Content="✕" Width="16" Height="14" Margin="1,0" FontSize="8"/>
+                                            <Button Content="-" Width="16" Height="14" Margin="1,0" FontSize="9" Background="#E0E0E0"/>
+                                            <Button Content="□" Width="16" Height="14" Margin="1,0" FontSize="8" Background="#E0E0E0"/>
+                                            <Button Content="✕" Width="16" Height="14" Margin="1,0" FontSize="9" Background="#E0E0E0"/>
                                         </StackPanel>
                                     </Grid>
                                 </Border>
-                                <Border Background="#CCCCCC" Margin="2" BorderBrush="#A0A0A0" BorderThickness="1">
-                                    <Grid Background="White" Margin="10"/>
+                                <Border Background="#D4D0C8" Margin="2" BorderBrush="#808080" BorderThickness="1">
+                                    <Grid Background="White" Margin="8"/>
                                 </Border>
                             </DockPanel>
                         </Border>
 
                         <!-- Card (back side) Window -->
-                        <Border Grid.Column="1" Margin="2" Background="#E0E0E0" BorderBrush="#707070" BorderThickness="1">
+                        <Border Grid.Column="1" Margin="3" Background="#D4D0C8" BorderBrush="#FFFFFF" BorderThickness="1,1,2,2">
                             <DockPanel>
-                                <Border DockPanel.Dock="Top" Background="#B4C6E7" Padding="4,2">
+                                <Border DockPanel.Dock="Top" Background="{StaticResource SubTitleBarBrush}" Padding="3,2">
                                     <Grid>
-                                        <StackPanel Orientation="Horizontal">
-                                            <TextBlock Text="🎴" Margin="0,0,5,0" FontSize="11"/>
-                                            <TextBlock Text="Card (back side)" FontWeight="Bold" FontSize="11"/>
+                                        <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                                            <TextBlock Text="🎴" Margin="2,0,5,0" FontSize="10"/>
+                                            <TextBlock Text="Card (back side)" FontWeight="Bold" FontSize="11" Foreground="#000000"/>
                                         </StackPanel>
                                         <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
-                                            <Button Content="_" Width="16" Height="14" Margin="1,0" FontSize="8"/>
-                                            <Button Content="□" Width="16" Height="14" Margin="1,0" FontSize="8"/>
-                                            <Button Content="✕" Width="16" Height="14" Margin="1,0" FontSize="8"/>
+                                            <Button Content="-" Width="16" Height="14" Margin="1,0" FontSize="9" Background="#E0E0E0"/>
+                                            <Button Content="□" Width="16" Height="14" Margin="1,0" FontSize="8" Background="#E0E0E0"/>
+                                            <Button Content="✕" Width="16" Height="14" Margin="1,0" FontSize="9" Background="#E0E0E0"/>
                                         </StackPanel>
                                     </Grid>
                                 </Border>
-                                <Border Background="#CCCCCC" Margin="2" BorderBrush="#A0A0A0" BorderThickness="1">
-                                    <Grid Background="White" Margin="10"/>
+                                <Border Background="#D4D0C8" Margin="2" BorderBrush="#808080" BorderThickness="1">
+                                    <Grid Background="White" Margin="8"/>
                                 </Border>
                             </DockPanel>
                         </Border>
                     </Grid>
 
                     <!-- Bottom Row: Report Window -->
-                    <Border Grid.Row="1" Margin="2" Background="#E0E0E0" BorderBrush="#707070" BorderThickness="1">
+                    <Border Grid.Row="1" Margin="3" Background="#D4D0C8" BorderBrush="#FFFFFF" BorderThickness="1,1,2,2">
                         <DockPanel>
-                            <Border DockPanel.Dock="Top" Background="#B4C6E7" Padding="4,2">
+                            <Border DockPanel.Dock="Top" Background="{StaticResource SubTitleBarBrush}" Padding="3,2">
                                 <Grid>
-                                    <StackPanel Orientation="Horizontal">
-                                        <TextBlock Text="📊" Margin="0,0,5,0" FontSize="11"/>
-                                        <TextBlock Text="Report" FontWeight="Bold" FontSize="11"/>
+                                    <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                                        <TextBlock Text="📊" Margin="2,0,5,0" FontSize="10"/>
+                                        <TextBlock Text="Report" FontWeight="Bold" FontSize="11" Foreground="#000000"/>
                                     </StackPanel>
                                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
-                                        <Button Content="_" Width="16" Height="14" Margin="1,0" FontSize="8"/>
-                                        <Button Content="□" Width="16" Height="14" Margin="1,0" FontSize="8"/>
-                                        <Button Content="✕" Width="16" Height="14" Margin="1,0" FontSize="8"/>
+                                        <Button Content="-" Width="16" Height="14" Margin="1,0" FontSize="9" Background="#E0E0E0"/>
+                                        <Button Content="□" Width="16" Height="14" Margin="1,0" FontSize="8" Background="#E0E0E0"/>
+                                        <Button Content="✕" Width="16" Height="14" Margin="1,0" FontSize="9" Background="#E0E0E0"/>
                                     </StackPanel>
                                 </Grid>
                             </Border>
-                            <Border Background="#CCCCCC" Margin="2" BorderBrush="#A0A0A0" BorderThickness="1">
-                                <Grid Background="White" Margin="10"/>
+                            <Border Background="#D4D0C8" Margin="2" BorderBrush="#808080" BorderThickness="1">
+                                <Grid Background="White" Margin="8"/>
                             </Border>
                         </DockPanel>
                     </Border>
