@@ -8,25 +8,46 @@
 
     <DockPanel LastChildFill="True">
 
-        <!-- 1. Top Menu Bar -->
+        <!-- Top Menu Bar matching exact screenshot design -->
         <Menu DockPanel.Dock="Top" Background="#F0F0F0" Padding="2,1">
+            
+            <!-- File Menu -->
             <MenuItem Header="_File">
-                <MenuItem Header="_New" InputGestureText="Ctrl+N" />
-                <MenuItem Header="_Open..." InputGestureText="Ctrl+O" />
-                <MenuItem Header="_Save" InputGestureText="Ctrl+S" />
+                <MenuItem Header="New Project..." InputGestureText="Ctrl+N" />
+                <MenuItem Header="Open Project..." InputGestureText="Ctrl+O" />
                 <Separator />
-                <MenuItem Header="E_xit" Click="MenuItem_Exit_Click" />
+                <MenuItem Header="Recent File" IsEnabled="False" />
+                <Separator />
+                <MenuItem Header="Exit" Click="MenuItem_Exit_Click" />
             </MenuItem>
+
+            <!-- View Menu -->
             <MenuItem Header="_View">
-                <MenuItem Header="_Toolbar" IsCheckable="True" IsChecked="True" />
-                <MenuItem Header="_Status Bar" IsCheckable="True" IsChecked="True" />
+                <MenuItem Header="Toolbars">
+                    <MenuItem Header="Project Toolbar" IsCheckable="True" IsChecked="True" />
+                    <MenuItem Header="Edit Toolbar" IsCheckable="True" IsChecked="True" />
+                    <MenuItem Header="View Toolbar" IsCheckable="True" IsChecked="True" />
+                    <MenuItem Header="Zoom Toolbar" IsCheckable="True" IsChecked="True" />
+                    <MenuItem Header="Properties Toolbar" IsCheckable="True" IsChecked="True" />
+                    <MenuItem Header="Application Toolbar" IsCheckable="True" IsChecked="True" />
+                    <MenuItem Header="Tools Toolbar" IsCheckable="True" IsChecked="True" />
+                    <Separator />
+                    <MenuItem Header="Large Toolbar Buttons" IsCheckable="True" IsChecked="True" RadioGrouping="ToolbarSize" />
+                    <MenuItem Header="Small Toolbar Buttons" IsCheckable="True" IsChecked="False" RadioGrouping="ToolbarSize" />
+                </MenuItem>
+                <MenuItem Header="Show Welcome on startup" IsCheckable="True" IsChecked="True" />
             </MenuItem>
+
+            <!-- Help Menu -->
             <MenuItem Header="_Help">
-                <MenuItem Header="_About ID Card Studio" />
+                <MenuItem Header="Online Help..." InputGestureText="F1" />
+                <Separator />
+                <MenuItem Header="About..." />
             </MenuItem>
+
         </Menu>
 
-        <!-- 2. Main Toolbar Area -->
+        <!-- Main Toolbar Area -->
         <Border DockPanel.Dock="Top" Background="#E3E3E3" BorderBrush="#B5B5B5" BorderThickness="0,1,0,1" Padding="2">
             <ToolBarTray Background="Transparent" IsLocked="True">
                 <ToolBar Background="Transparent" Band="0" BandIndex="0">
@@ -69,51 +90,10 @@
                     <Button ToolTip="Redo">
                         <TextBlock Text="↪️" FontSize="14"/>
                     </Button>
-                    <Button ToolTip="Align Left">
-                        <TextBlock Text="⇤" FontSize="14" FontWeight="Bold"/>
-                    </Button>
-                    <Button ToolTip="Align Right">
-                        <TextBlock Text="⇥" FontSize="14" FontWeight="Bold"/>
-                    </Button>
-                    <Button ToolTip="Center Horizontally">
-                        <TextBlock Text="↔" FontSize="14" FontWeight="Bold"/>
-                    </Button>
 
                     <Separator />
 
-                    <!-- Designer Specific Tools -->
-                    <Button ToolTip="Select Tool">
-                        <TextBlock Text="↖" FontSize="14" FontWeight="Bold"/>
-                    </Button>
-                    <Button ToolTip="Add Text">
-                        <TextBlock Text="T" FontSize="13" FontWeight="Bold" FontFamily="Times New Roman"/>
-                    </Button>
-                    <Button ToolTip="Add Rectangle">
-                        <TextBlock Text="▭" FontSize="14"/>
-                    </Button>
-                    <Button ToolTip="Add Image">
-                        <TextBlock Text="🖼️" FontSize="14"/>
-                    </Button>
-                    <Button ToolTip="Add Barcode">
-                        <TextBlock Text="║▌" FontSize="12" FontWeight="Bold"/>
-                    </Button>
-
-                    <Separator />
-
-                    <!-- Smart Card / ID Tools -->
-                    <Button ToolTip="ID Smart Card Settings 1">
-                        <TextBlock Text="💳" FontSize="14"/>
-                    </Button>
-                    <Button ToolTip="ID Smart Card Settings 2">
-                        <TextBlock Text="📇" FontSize="14"/>
-                    </Button>
-                    <Button ToolTip="Chip Config">
-                        <TextBlock Text="⚙️" FontSize="14"/>
-                    </Button>
-
-                    <Separator />
-
-                    <!-- Zoom / View Control -->
+                    <!-- Zoom Control -->
                     <ComboBox Width="75" SelectedIndex="0" VerticalAlignment="Center" Margin="2,0">
                         <ComboBoxItem Content="100%"/>
                         <ComboBoxItem Content="75%"/>
@@ -124,17 +104,16 @@
             </ToolBarTray>
         </Border>
 
-        <!-- 3. Bottom Status Bar -->
+        <!-- Bottom Status Bar -->
         <StatusBar DockPanel.Dock="Bottom" Background="#F0F0F0" BorderBrush="#B5B5B5" BorderThickness="0,1,0,0">
             <StatusBarItem>
                 <TextBlock Text="For Help, press F1" FontSize="11" Foreground="#333333"/>
             </StatusBarItem>
         </StatusBar>
 
-        <!-- 4. Canvas Work Area (MDI Background) -->
+        <!-- Canvas Work Area -->
         <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" Background="#808080">
             <Grid x:Name="DesignerCanvasContainer" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
-                <!-- Designer Canvas or Cards will be added here -->
             </Grid>
         </ScrollViewer>
 
