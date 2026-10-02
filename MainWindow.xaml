@@ -178,7 +178,7 @@
                             <ColumnDefinition Width="*" />
                         </Grid.ColumnDefinitions>
 
-                        <!-- Card (Front) Window -->
+                        <!-- Card (Front) Window (CR-80 Ratio) -->
                         <Border Grid.Column="0" Margin="3" Background="#D4D0C8" BorderBrush="#FFFFFF" BorderThickness="1,1,2,2">
                             <DockPanel>
                                 <Border DockPanel.Dock="Top" Background="{StaticResource SubTitleBarBrush}" Padding="3,2">
@@ -195,12 +195,22 @@
                                     </Grid>
                                 </Border>
                                 <Border Background="#D4D0C8" Margin="2" BorderBrush="#808080" BorderThickness="1">
-                                    <Grid Background="White" Margin="8"/>
+                                    <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" Background="#D4D0C8">
+                                        <Grid HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10">
+                                            <!-- CR-80 Standard Card Size Canvas (324px x 204px) -->
+                                            <Border Width="324" Height="204" Background="White" BorderBrush="#000000" BorderThickness="1">
+                                                <Border.Effect>
+                                                    <DropShadowEffect Color="Black" BlurRadius="5" ShadowDepth="2" Opacity="0.3"/>
+                                                </Border.Effect>
+                                                <Canvas x:Name="CardFrontCanvas" Background="White"/>
+                                            </Border>
+                                        </Grid>
+                                    </ScrollViewer>
                                 </Border>
                             </DockPanel>
                         </Border>
 
-                        <!-- Card (back side) Window -->
+                        <!-- Card (back side) Window (CR-80 Ratio) -->
                         <Border Grid.Column="1" Margin="3" Background="#D4D0C8" BorderBrush="#FFFFFF" BorderThickness="1,1,2,2">
                             <DockPanel>
                                 <Border DockPanel.Dock="Top" Background="{StaticResource SubTitleBarBrush}" Padding="3,2">
@@ -217,7 +227,17 @@
                                     </Grid>
                                 </Border>
                                 <Border Background="#D4D0C8" Margin="2" BorderBrush="#808080" BorderThickness="1">
-                                    <Grid Background="White" Margin="8"/>
+                                    <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" Background="#D4D0C8">
+                                        <Grid HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10">
+                                            <!-- CR-80 Standard Card Size Canvas (324px x 204px) -->
+                                            <Border Width="324" Height="204" Background="White" BorderBrush="#000000" BorderThickness="1">
+                                                <Border.Effect>
+                                                    <DropShadowEffect Color="Black" BlurRadius="5" ShadowDepth="2" Opacity="0.3"/>
+                                                </Border.Effect>
+                                                <Canvas x:Name="CardBackCanvas" Background="White"/>
+                                            </Border>
+                                        </Grid>
+                                    </ScrollViewer>
                                 </Border>
                             </DockPanel>
                         </Border>
