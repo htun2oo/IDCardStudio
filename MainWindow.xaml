@@ -95,8 +95,9 @@
                                     </Grid>
                                 </Border>
                                 <Border Background="#A0A0A0" Padding="10">
-                                    <Border x:Name="CardFrontCanvas" Width="220" Height="140" Background="White" BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Center" VerticalAlignment="Center">
-                                        <TextBlock Text="[ Card Front ]" Foreground="Gray" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                    <!-- CR80 Standard Aspect Ratio (238 x 150) -->
+                                    <Border x:Name="CardFrontCanvas" Width="238" Height="150" Background="White" BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Center" VerticalAlignment="Center">
+                                        <TextBlock Text="[ Card Front - CR80 ]" Foreground="Gray" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                                     </Border>
                                 </Border>
                             </DockPanel>
@@ -116,8 +117,9 @@
                                     </Grid>
                                 </Border>
                                 <Border Background="#A0A0A0" Padding="10">
-                                    <Border x:Name="CardBackCanvas" Width="220" Height="140" Background="White" BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Center" VerticalAlignment="Center">
-                                        <TextBlock Text="[ Card Back ]" Foreground="Gray" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                    <!-- CR80 Standard Aspect Ratio (238 x 150) -->
+                                    <Border x:Name="CardBackCanvas" Width="238" Height="150" Background="White" BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Center" VerticalAlignment="Center">
+                                        <TextBlock Text="[ Card Back - CR80 ]" Foreground="Gray" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                                     </Border>
                                 </Border>
                             </DockPanel>
