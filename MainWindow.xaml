@@ -8,7 +8,7 @@
 
     <DockPanel LastChildFill="True">
 
-        <!-- Top Menu Bar matching exact screenshot design -->
+        <!-- Top Menu Bar -->
         <Menu DockPanel.Dock="Top" Background="#F0F0F0" Padding="2,1">
             
             <!-- File Menu -->
@@ -32,8 +32,8 @@
                     <MenuItem Header="Application Toolbar" IsCheckable="True" IsChecked="True" />
                     <MenuItem Header="Tools Toolbar" IsCheckable="True" IsChecked="True" />
                     <Separator />
-                    <MenuItem Header="Large Toolbar Buttons" IsCheckable="True" IsChecked="True" RadioGrouping="ToolbarSize" />
-                    <MenuItem Header="Small Toolbar Buttons" IsCheckable="True" IsChecked="False" RadioGrouping="ToolbarSize" />
+                    <MenuItem Header="Large Toolbar Buttons" IsCheckable="True" IsChecked="True" />
+                    <MenuItem Header="Small Toolbar Buttons" IsCheckable="True" IsChecked="False" />
                 </MenuItem>
                 <MenuItem Header="Show Welcome on startup" IsCheckable="True" IsChecked="True" />
             </MenuItem>
