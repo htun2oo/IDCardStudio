@@ -16,26 +16,23 @@ namespace IDCardStudio
 
             if (dialog.ShowDialog() == true)
             {
-                // 1. Project Title ပြောင်းလဲခြင်း
                 this.Title = $"Datacard ID Works Enterprise Designer - {dialog.ProjectName} - [Card]";
 
-                // 2. Workspace အား ပေါ်လာစေခြင်း
                 WorkspaceGrid.Visibility = Visibility.Visible;
 
-                // 3. Sub-window များကို ပေါ်/ဖျောက် ပြုလုပ်ခြင်း
+                // Window များ ဖွင့်လှစ်ခြင်း
                 ProductionFormWindow.Visibility = dialog.IncludeProductionForm ? Visibility.Visible : Visibility.Collapsed;
                 CardDesignWindow.Visibility = dialog.IncludeCardDesign ? Visibility.Visible : Visibility.Collapsed;
                 CardFrontWindow.Visibility = dialog.IncludeCardDesign ? Visibility.Visible : Visibility.Collapsed;
                 CardBackWindow.Visibility = dialog.IncludeCardDesign ? Visibility.Visible : Visibility.Collapsed;
                 ReportDesignWindow.Visibility = dialog.IncludeReportDesign ? Visibility.Visible : Visibility.Collapsed;
 
-                // 4. Content Area များကို ပုံမှန် ပေါ်စေရန် ပြန်လည်သတ်မှတ်ခြင်း
-                ProductionFormContent.Visibility = Visibility.Visible;
-                CardFrontContent.Visibility = Visibility.Visible;
-                CardBackContent.Visibility = Visibility.Visible;
-                ReportContent.Visibility = Visibility.Visible;
+                // Minimized Bar များကို ဖျောက်ထားခြင်း
+                minProdWindow.Visibility = Visibility.Collapsed;
+                minCardFrontWindow.Visibility = Visibility.Collapsed;
+                minCardBackWindow.Visibility = Visibility.Collapsed;
+                minReportWindow.Visibility = Visibility.Collapsed;
 
-                // 5. Card Orientation Dimension
                 if (dialog.IncludeCardDesign)
                 {
                     if (dialog.IsLandscape)
@@ -54,7 +51,6 @@ namespace IDCardStudio
                     }
                 }
 
-                // 6. Menu Bar များ Visible ပြုလုပ်ခြင်း
                 EditMenu.Visibility = Visibility.Visible;
                 InsertMenu.Visibility = Visibility.Visible;
                 FormatMenu.Visibility = Visibility.Visible;
@@ -75,68 +71,100 @@ namespace IDCardStudio
             Application.Current.Shutdown();
         }
 
-        // --- Production Form Sub-window Actions ---
+        // --- Production Form Logic ---
         private void btnMinProduction_Click(object sender, RoutedEventArgs e)
         {
-            ProductionFormContent.Visibility = ProductionFormContent.Visibility == Visibility.Visible ? Visibility.Collapsed : Visibility.Visible;
+            ProductionFormWindow.Visibility = Visibility.Collapsed;
+            minProdWindow.Visibility = Visibility.Visible;
+        }
+
+        private void btnRestoreProduction_Click(object sender, RoutedEventArgs e)
+        {
+            ProductionFormWindow.Visibility = Visibility.Visible;
+            minProdWindow.Visibility = Visibility.Collapsed;
         }
 
         private void btnMaxProduction_Click(object sender, RoutedEventArgs e)
         {
-            ProductionColumn.Width = ProductionColumn.Width.Value == 1.2 ? new GridLength(3, GridUnitType.Star) : new GridLength(1.2, GridUnitType.Star);
+            btnRestoreProduction_Click(sender, e);
         }
 
         private void btnCloseProduction_Click(object sender, RoutedEventArgs e)
         {
             ProductionFormWindow.Visibility = Visibility.Collapsed;
+            minProdWindow.Visibility = Visibility.Collapsed;
         }
 
-        // --- Card Front Sub-window Actions ---
+        // --- Card Front Logic ---
         private void btnMinCardFront_Click(object sender, RoutedEventArgs e)
         {
-            CardFrontContent.Visibility = CardFrontContent.Visibility == Visibility.Visible ? Visibility.Collapsed : Visibility.Visible;
+            CardFrontWindow.Visibility = Visibility.Collapsed;
+            minCardFrontWindow.Visibility = Visibility.Visible;
+        }
+
+        private void btnRestoreCardFront_Click(object sender, RoutedEventArgs e)
+        {
+            CardFrontWindow.Visibility = Visibility.Visible;
+            minCardFrontWindow.Visibility = Visibility.Collapsed;
         }
 
         private void btnMaxCardFront_Click(object sender, RoutedEventArgs e)
         {
-            // Maximize / Restore Toggle Logic
+            btnRestoreCardFront_Click(sender, e);
         }
 
         private void btnCloseCardFront_Click(object sender, RoutedEventArgs e)
         {
             CardFrontWindow.Visibility = Visibility.Collapsed;
+            minCardFrontWindow.Visibility = Visibility.Collapsed;
         }
 
-        // --- Card Back Sub-window Actions ---
+        // --- Card Back Logic ---
         private void btnMinCardBack_Click(object sender, RoutedEventArgs e)
         {
-            CardBackContent.Visibility = CardBackContent.Visibility == Visibility.Visible ? Visibility.Collapsed : Visibility.Visible;
+            CardBackWindow.Visibility = Visibility.Collapsed;
+            minCardBackWindow.Visibility = Visibility.Visible;
+        }
+
+        private void btnRestoreCardBack_Click(object sender, RoutedEventArgs e)
+        {
+            CardBackWindow.Visibility = Visibility.Visible;
+            minCardBackWindow.Visibility = Visibility.Collapsed;
         }
 
         private void btnMaxCardBack_Click(object sender, RoutedEventArgs e)
         {
-            // Maximize / Restore Toggle Logic
+            btnRestoreCardBack_Click(sender, e);
         }
 
         private void btnCloseCardBack_Click(object sender, RoutedEventArgs e)
         {
             CardBackWindow.Visibility = Visibility.Collapsed;
+            minCardBackWindow.Visibility = Visibility.Collapsed;
         }
 
-        // --- Report Design Sub-window Actions ---
+        // --- Report Design Logic ---
         private void btnMinReport_Click(object sender, RoutedEventArgs e)
         {
-            ReportContent.Visibility = ReportContent.Visibility == Visibility.Visible ? Visibility.Collapsed : Visibility.Visible;
+            ReportDesignWindow.Visibility = Visibility.Collapsed;
+            minReportWindow.Visibility = Visibility.Visible;
+        }
+
+        private void btnRestoreReport_Click(object sender, RoutedEventArgs e)
+        {
+            ReportDesignWindow.Visibility = Visibility.Visible;
+            minReportWindow.Visibility = Visibility.Collapsed;
         }
 
         private void btnMaxReport_Click(object sender, RoutedEventArgs e)
         {
-            // Maximize / Restore Toggle Logic
+            btnRestoreReport_Click(sender, e);
         }
 
         private void btnCloseReport_Click(object sender, RoutedEventArgs e)
         {
             ReportDesignWindow.Visibility = Visibility.Collapsed;
+            minReportWindow.Visibility = Visibility.Collapsed;
         }
     }
 }
