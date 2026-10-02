@@ -6,7 +6,7 @@ namespace IDCardStudio
     {
         public string ProjectName => txtProjectName.Text;
 
-        // Checkbox တန်ဖိုးများကို ရယူရန် Property များ
+        // Checkbox နှင့် RadioButton တန်ဖိုးများကို MainWindow သို့ လှမ်းယူရန် Property များ
         public bool IncludeProductionForm => chkProductionForm.IsChecked == true;
         public bool IncludeCardDesign => chkCardDesign.IsChecked == true;
         public bool IncludeReportDesign => chkReportDesign.IsChecked == true;
