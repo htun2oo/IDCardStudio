@@ -1,43 +1,28 @@
-using System.Windows;
-
-namespace IDCardStudio
+private void NewProject_Click(object sender, RoutedEventArgs e)
 {
-    public partial class MainWindow : Window
+    NewProjectWindow dialog = new NewProjectWindow();
+    dialog.Owner = this;
+
+    if (dialog.ShowDialog() == true)
     {
-        public MainWindow()
-        {
-            InitializeComponent();
-        }
+        // 1. Project Title ပြောင်းခြင်း
+        this.Title = $"Datacard ID Works Enterprise Designer - {dialog.ProjectName} - [Card]";
 
-        private void NewProject_Click(object sender, RoutedEventArgs e)
-        {
-            NewProjectWindow dialog = new NewProjectWindow();
-            dialog.Owner = this;
+        // 2. Workspace အား ပေါ်လာစေခြင်း
+        WorkspaceGrid.Visibility = Visibility.Visible;
 
-            if (dialog.ShowDialog() == true)
-            {
-                string projectName = dialog.ProjectName;
+        // 3. Checkbox အလိုက် သက်ဆိုင်ရာ Window များကိုသာ ပေါ်လာအောင် ပြုလုပ်ခြင်း
+        ProductionFormWindow.Visibility = dialog.IncludeProductionForm ? Visibility.Visible : Visibility.Collapsed;
+        CardDesignWindow.Visibility = dialog.IncludeCardDesign ? Visibility.Visible : Visibility.Collapsed;
+        ReportDesignWindow.Visibility = dialog.IncludeReportDesign ? Visibility.Visible : Visibility.Collapsed;
 
-                // ၁။ Window Title ကို ပြောင်းလဲခြင်း
-                this.Title = $"Datacard ID Works Enterprise Designer - {projectName} - [Card]";
+        // 4. Menu Bar များကို Enable ပြုလုပ်ခြင်း
+        EditMenu.Visibility = Visibility.Visible;
+        InsertMenu.Visibility = Visibility.Visible;
+        FormatMenu.Visibility = Visibility.Visible;
+        WindowMenu.Visibility = Visibility.Visible;
 
-                // ၂။ Workspace/Sub-windows များကို ပေါ်လာစေခြင်း
-                WorkspaceGrid.Visibility = Visibility.Visible;
-
-                // ၃။ Menu Items များကို ပေါ်လာစေပြီး Save Options များကို Enable လုပ်ခြင်း
-                EditMenu.Visibility = Visibility.Visible;
-                InsertMenu.Visibility = Visibility.Visible;
-                FormatMenu.Visibility = Visibility.Visible;
-                WindowMenu.Visibility = Visibility.Visible;
-
-                SaveMenuItem.IsEnabled = true;
-                SaveAsMenuItem.IsEnabled = true;
-            }
-        }
-
-        private void MenuItem_Exit_Click(object sender, RoutedEventArgs e)
-        {
-            Application.Current.Shutdown();
-        }
+        SaveMenuItem.IsEnabled = true;
+        SaveAsMenuItem.IsEnabled = true;
     }
 }
