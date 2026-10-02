@@ -4,23 +4,34 @@ namespace IDCardStudio
 {
     public partial class NewProjectWindow : Window
     {
-        public string ProjectName => ProjectNameTextBox.Text;
+        public string ProjectName => txtProjectName.Text;
+
+        // Checkbox တန်ဖိုးများကို ရယူရန် Property များ
+        public bool IncludeProductionForm => chkProductionForm.IsChecked == true;
+        public bool IncludeCardDesign => chkCardDesign.IsChecked == true;
+        public bool IncludeReportDesign => chkReportDesign.IsChecked == true;
+        public bool IsLandscape => rdoLandscape.IsChecked == true;
 
         public NewProjectWindow()
         {
             InitializeComponent();
-            ProjectNameTextBox.Focus();
         }
 
-        private void OK_Click(object sender, RoutedEventArgs e)
+        private void btnOK_Click(object sender, RoutedEventArgs e)
         {
-            if (string.IsNullOrWhiteSpace(ProjectNameTextBox.Text))
+            if (string.IsNullOrWhiteSpace(txtProjectName.Text))
             {
-                MessageBox.Show("Please enter a project name.", "New Project", MessageBoxButton.OK, MessageBoxImage.Warning);
+                MessageBox.Show("Please enter a project name.", "Validation Error", MessageBoxButton.OK, MessageBoxImage.Warning);
                 return;
             }
 
             DialogResult = true;
+            Close();
+        }
+
+        private void btnCancel_Click(object sender, RoutedEventArgs e)
+        {
+            DialogResult = false;
             Close();
         }
     }
