@@ -25,26 +25,22 @@
 
             <!-- Edit Menu -->
             <MenuItem x:Name="EditMenu" Header="_Edit" Visibility="Collapsed"/>
-
-            <!-- View Menu -->
             <MenuItem x:Name="ViewMenu" Header="_View"/>
-
-            <!-- Insert Menu -->
             <MenuItem x:Name="InsertMenu" Header="_Insert" Visibility="Collapsed"/>
-
-            <!-- Format Menu -->
             <MenuItem x:Name="FormatMenu" Header="F_ormat" Visibility="Collapsed"/>
-
-            <!-- Window Menu -->
             <MenuItem x:Name="WindowMenu" Header="_Window" Visibility="Collapsed"/>
-
-            <!-- Help Menu -->
             <MenuItem Header="_Help"/>
         </Menu>
 
         <!-- Work Area Container -->
-        <Grid Background="#7F7F7F" Margin="2">
-            <Grid x:Name="WorkspaceGrid" Visibility="Collapsed">
+        <Grid Background="#7F7F7F">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+
+            <!-- Workspace Main Content -->
+            <Grid Grid.Row="0" x:Name="WorkspaceGrid" Visibility="Collapsed" Margin="2">
                 <Grid.ColumnDefinitions>
                     <!-- Left Side: Production Form -->
                     <ColumnDefinition x:Name="ProductionColumn" Width="1.2*" />
@@ -54,8 +50,8 @@
 
                 <!-- 1. Production Form Window -->
                 <Border x:Name="ProductionFormWindow" Grid.Column="0" Margin="2" Background="#D4D0C8" BorderBrush="#808080" BorderThickness="1" Visibility="Collapsed">
-                    <DockPanel x:Name="ProductionFormDock">
-                        <!-- Title Bar with Minimize, Maximize, Close -->
+                    <DockPanel>
+                        <!-- Title Bar -->
                         <Border DockPanel.Dock="Top" Background="#000080" Height="22" Padding="4,0,2,0">
                             <Grid>
                                 <TextBlock Text="Production Form" Foreground="White" FontWeight="Bold" FontSize="11" VerticalAlignment="Center"/>
@@ -66,17 +62,15 @@
                                 </StackPanel>
                             </Grid>
                         </Border>
-                        <!-- Form Content Area -->
-                        <Grid x:Name="ProductionFormContent" Background="White" Margin="4"/>
+                        <!-- Content -->
+                        <Grid Background="White" Margin="4"/>
                     </DockPanel>
                 </Border>
 
                 <!-- Right Side Area (Card Windows + Report Window) -->
                 <Grid Grid.Column="1">
                     <Grid.RowDefinitions>
-                        <!-- Top Row: Card Front & Back Windows -->
                         <RowDefinition Height="Auto" />
-                        <!-- Bottom Row: Report Design Window -->
                         <RowDefinition Height="*" />
                     </Grid.RowDefinitions>
 
@@ -100,7 +94,7 @@
                                         </StackPanel>
                                     </Grid>
                                 </Border>
-                                <Border x:Name="CardFrontContent" Background="#A0A0A0" Padding="10">
+                                <Border Background="#A0A0A0" Padding="10">
                                     <Border x:Name="CardFrontCanvas" Width="220" Height="140" Background="White" BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Center" VerticalAlignment="Center">
                                         <TextBlock Text="[ Card Front ]" Foreground="Gray" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                                     </Border>
@@ -121,7 +115,7 @@
                                         </StackPanel>
                                     </Grid>
                                 </Border>
-                                <Border x:Name="CardBackContent" Background="#A0A0A0" Padding="10">
+                                <Border Background="#A0A0A0" Padding="10">
                                     <Border x:Name="CardBackCanvas" Width="220" Height="140" Background="White" BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Center" VerticalAlignment="Center">
                                         <TextBlock Text="[ Card Back ]" Foreground="Gray" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                                     </Border>
@@ -143,11 +137,64 @@
                                     </StackPanel>
                                 </Grid>
                             </Border>
-                            <Grid x:Name="ReportContent" Background="White" Margin="4"/>
+                            <Grid Background="White" Margin="4"/>
                         </DockPanel>
                     </Border>
                 </Grid>
             </Grid>
+
+            <!-- Bottom Minimized Windows Dock Container (Image 1 Style) -->
+            <StackPanel Grid.Row="1" x:Name="MinimizedBar" Orientation="Horizontal" VerticalAlignment="Bottom" Height="26" Margin="2,0,2,2">
+                
+                <!-- Minimized Production Form -->
+                <Border x:Name="minProdWindow" Width="160" Height="24" Background="#D4D0C8" BorderBrush="#808080" BorderThickness="1" Margin="0,0,2,0" Visibility="Collapsed">
+                    <Grid Padding="2,0">
+                        <TextBlock Text="Production Form" FontSize="11" VerticalAlignment="Center" Margin="2,0,0,0"/>
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                            <Button Content="❐" Width="16" Height="16" FontSize="8" Margin="1" Click="btnRestoreProduction_Click"/>
+                            <Button Content="□" Width="16" Height="16" FontSize="8" Margin="1" Click="btnRestoreProduction_Click"/>
+                            <Button Content="X" Width="16" Height="16" FontSize="8" FontWeight="Bold" Margin="1" Click="btnCloseProduction_Click"/>
+                        </StackPanel>
+                    </Grid>
+                </Border>
+
+                <!-- Minimized Card Front -->
+                <Border x:Name="minCardFrontWindow" Width="160" Height="24" Background="#D4D0C8" BorderBrush="#808080" BorderThickness="1" Margin="0,0,2,0" Visibility="Collapsed">
+                    <Grid Padding="2,0">
+                        <TextBlock Text="Card" FontSize="11" VerticalAlignment="Center" Margin="2,0,0,0"/>
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                            <Button Content="❐" Width="16" Height="16" FontSize="8" Margin="1" Click="btnRestoreCardFront_Click"/>
+                            <Button Content="□" Width="16" Height="16" FontSize="8" Margin="1" Click="btnRestoreCardFront_Click"/>
+                            <Button Content="X" Width="16" Height="16" FontSize="8" FontWeight="Bold" Margin="1" Click="btnCloseCardFront_Click"/>
+                        </StackPanel>
+                    </Grid>
+                </Border>
+
+                <!-- Minimized Card Back -->
+                <Border x:Name="minCardBackWindow" Width="160" Height="24" Background="#D4D0C8" BorderBrush="#808080" BorderThickness="1" Margin="0,0,2,0" Visibility="Collapsed">
+                    <Grid Padding="2,0">
+                        <TextBlock Text="Card (back side)" FontSize="11" VerticalAlignment="Center" Margin="2,0,0,0"/>
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                            <Button Content="❐" Width="16" Height="16" FontSize="8" Margin="1" Click="btnRestoreCardBack_Click"/>
+                            <Button Content="□" Width="16" Height="16" FontSize="8" Margin="1" Click="btnRestoreCardBack_Click"/>
+                            <Button Content="X" Width="16" Height="16" FontSize="8" FontWeight="Bold" Margin="1" Click="btnCloseCardBack_Click"/>
+                        </StackPanel>
+                    </Grid>
+                </Border>
+
+                <!-- Minimized Report Design -->
+                <Border x:Name="minReportWindow" Width="160" Height="24" Background="#D4D0C8" BorderBrush="#808080" BorderThickness="1" Margin="0,0,2,0" Visibility="Collapsed">
+                    <Grid Padding="2,0">
+                        <TextBlock Text="Report Design" FontSize="11" VerticalAlignment="Center" Margin="2,0,0,0"/>
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                            <Button Content="❐" Width="16" Height="16" FontSize="8" Margin="1" Click="btnRestoreReport_Click"/>
+                            <Button Content="□" Width="16" Height="16" FontSize="8" Margin="1" Click="btnRestoreReport_Click"/>
+                            <Button Content="X" Width="16" Height="16" FontSize="8" FontWeight="Bold" Margin="1" Click="btnCloseReport_Click"/>
+                        </StackPanel>
+                    </Grid>
+                </Border>
+
+            </StackPanel>
         </Grid>
     </DockPanel>
 </Window>
