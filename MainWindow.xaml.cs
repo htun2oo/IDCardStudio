@@ -13,16 +13,25 @@ namespace IDCardStudio
         {
             NewProjectWindow dialog = new NewProjectWindow();
             dialog.Owner = this;
-            
+
             if (dialog.ShowDialog() == true)
             {
                 string projectName = dialog.ProjectName;
 
-                // Window Header/Title ကို သတ်မှတ်ထားသည့် ပုံစံအတိုင်း ပြောင်းလဲခြင်း
-                this.Title = $"ID Card Studio Designer - {projectName} - [Card]";
+                // ၁။ Window Title ကို ပြောင်းလဲခြင်း
+                this.Title = $"Datacard ID Works Enterprise Designer - {projectName} - [Card]";
 
-                // Layout ပေါ်လာစေရန် Visibility ပြောင်းလဲခြင်း
+                // ၂။ Workspace/Sub-windows များကို ပေါ်လာစေခြင်း
                 WorkspaceGrid.Visibility = Visibility.Visible;
+
+                // ၃။ Menu Items များကို ပေါ်လာစေပြီး Save Options များကို Enable လုပ်ခြင်း
+                EditMenu.Visibility = Visibility.Visible;
+                InsertMenu.Visibility = Visibility.Visible;
+                FormatMenu.Visibility = Visibility.Visible;
+                WindowMenu.Visibility = Visibility.Visible;
+
+                SaveMenuItem.IsEnabled = true;
+                SaveAsMenuItem.IsEnabled = true;
             }
         }
 
