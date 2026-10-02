@@ -2,58 +2,60 @@
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="New Project" 
-        Height="295" Width="380"
+        Height="310" Width="430"
         WindowStartupLocation="CenterOwner"
         ResizeMode="NoResize"
         Background="#F0F0F0">
 
-    <Grid Margin="12">
+    <Grid Margin="15">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*" />
-            <ColumnDefinition Width="85" />
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="Auto"/>
         </Grid.ColumnDefinitions>
 
-        <!-- Left Controls Area -->
-        <StackPanel Grid.Column="0" Margin="0,0,10,0">
-            <!-- Project Name Section -->
-            <TextBlock Text="Project Name:" Margin="0,0,0,4" FontSize="12"/>
-            <TextBox x:Name="ProjectNameTextBox" Height="23" VerticalContentAlignment="Center" Margin="0,0,0,10"/>
+        <!-- Project Name Input Area -->
+        <StackPanel Grid.Row="0" Grid.Column="0" Margin="0,0,10,10">
+            <TextBlock Text="Project Name:" Margin="0,0,0,5" FontSize="12"/>
+            <TextBox x:Name="txtProjectName" Height="24" VerticalContentAlignment="Center" Padding="3,0"/>
+        </StackPanel>
 
-            <!-- Initial Components GroupBox -->
-            <GroupBox Header="Initial Components" Padding="8,6,8,8">
-                <StackPanel>
-                    <!-- Production Form Design Checkbox -->
-                    <CheckBox Content="Production Form Design" IsChecked="True" Margin="0,2,0,4"/>
+        <!-- Action Buttons (OK & Cancel) -->
+        <StackPanel Grid.Row="0" Grid.Column="1" Grid.RowSpan="2" Width="80">
+            <Button x:Name="btnOK" Content="OK" Height="26" Margin="0,18,0,8" Click="btnOK_Click" IsDefault="True"/>
+            <Button x:Name="btnCancel" Content="Cancel" Height="26" Click="btnCancel_Click" IsCancel="True"/>
+        </StackPanel>
 
-                    <!-- Card Design Checkbox -->
-                    <CheckBox x:Name="CardDesignCheckBox" Content="Card Design" IsChecked="True" Margin="0,2,0,4"/>
+        <!-- Initial Components GroupBox -->
+        <GroupBox Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" Header="Initial Components" Margin="0,5,0,0" Padding="10">
+            <StackPanel>
+                <!-- Production Form Checkbox -->
+                <CheckBox x:Name="chkProductionForm" Content="Production Form Design" IsChecked="True" Margin="0,3"/>
 
-                    <!-- Landscape Option -->
-                    <StackPanel Orientation="Horizontal" Margin="24,2,0,4">
-                        <Border Width="18" Height="12" BorderBrush="Black" BorderThickness="1" Margin="0,0,12,0" Background="White"/>
-                        <RadioButton x:Name="LandscapeRadio" Content="Landscape" IsChecked="True" GroupName="Orientation"/>
+                <!-- Card Design Checkbox & Radio Buttons -->
+                <CheckBox x:Name="chkCardDesign" Content="Card Design" IsChecked="True" Margin="0,5,0,2"/>
+
+                <StackPanel Margin="20,2,0,5">
+                    <StackPanel Orientation="Horizontal" Margin="0,2">
+                        <Border Width="16" Height="11" BorderBrush="Black" BorderThickness="1" Background="White" Margin="0,0,10,0"/>
+                        <RadioButton x:Name="rdoLandscape" Content="Landscape" IsChecked="True" GroupName="CardOrientation"/>
                     </StackPanel>
 
-                    <!-- Portrait Option -->
-                    <StackPanel Orientation="Horizontal" Margin="24,2,0,6">
-                        <Border Width="12" Height="18" BorderBrush="Black" BorderThickness="1" Margin="3,0,15,0" Background="White"/>
-                        <RadioButton x:Name="PortraitRadio" Content="Portrait" GroupName="Orientation"/>
+                    <StackPanel Orientation="Horizontal" Margin="0,4">
+                        <Border Width="11" Height="16" BorderBrush="Black" BorderThickness="1" Background="White" Margin="2,0,13,0"/>
+                        <RadioButton x:Name="rdoPortrait" Content="Portrait" GroupName="CardOrientation"/>
                     </StackPanel>
 
-                    <!-- Allow multiple card designs -->
-                    <CheckBox Content="Allow for more than one card design&#10;(data-driven card production)" 
-                              Margin="24,2,0,6" FontSize="11"/>
-
-                    <!-- Report Design Checkbox (Inside GroupBox) -->
-                    <CheckBox Content="Report Design" Margin="0,4,0,0"/>
+                    <CheckBox x:Name="chkMultiCardDesign" Content="Allow for more than one card design&#10;(data-driven card production)" Margin="0,6,0,0" Foreground="#555555" FontSize="11"/>
                 </StackPanel>
-            </GroupBox>
-        </StackPanel>
 
-        <!-- Right Buttons Area -->
-        <StackPanel Grid.Column="1" VerticalAlignment="Top" Margin="0,18,0,0">
-            <Button Content="OK" Width="75" Height="23" Margin="0,0,0,6" IsDefault="True" Click="OK_Click"/>
-            <Button Content="Cancel" Width="75" Height="23" IsCancel="True"/>
-        </StackPanel>
+                <!-- Report Design Checkbox -->
+                <CheckBox x:Name="chkReportDesign" Content="Report Design" IsChecked="False" Margin="0,5,0,0"/>
+            </StackPanel>
+        </GroupBox>
     </Grid>
 </Window>
