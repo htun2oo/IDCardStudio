@@ -1,37 +1,38 @@
-private void NewProject_Click(object sender, RoutedEventArgs e)
+using System.Windows;
+
+namespace IDCardStudio
 {
-    NewProjectWindow dlg = new NewProjectWindow();
-    dlg.Owner = this;
-
-    if (dlg.ShowDialog() == true)
+    public partial class NewProjectWindow : Window
     {
-        string projectName = dlg.ProjectName;
+        public string ProjectName => txtProjectName.Text;
 
-        // CheckBox ရွေးချယ်ထားမှု တန်ဖိုးများ ရယူခြင်း
-        bool createProductionForm = dlg.IncludeProductionForm;
-        bool createCardDesign = dlg.IncludeCardDesign;
-        bool createReportDesign = dlg.IncludeReportDesign;
-        bool isLandscape = dlg.IsLandscape;
+        // Checkbox နှင့် RadioButton တန်ဖိုးများကို MainWindow သို့ လှမ်းယူရန် Property များ
+        public bool IncludeProductionForm => chkProductionForm.IsChecked == true;
+        public bool IncludeCardDesign => chkCardDesign.IsChecked == true;
+        public bool IncludeReportDesign => chkReportDesign.IsChecked == true;
+        public bool IsLandscape => rdoLandscape.IsChecked == true;
 
-        // ၁။ Production Form Design ရွေးချယ်ထားပါက
-        if (createProductionForm)
+        public NewProjectWindow()
         {
-            // Production Form Window သို့မဟုတ် Tab ကို ပေါ်လာအောင် ပြုလုပ်ခြင်း
-            OpenProductionFormWindow();
+            InitializeComponent();
         }
 
-        // ၂။ Card Design ရွေးချယ်ထားပါက
-        if (createCardDesign)
+        private void btnOK_Click(object sender, RoutedEventArgs e)
         {
-            // Card Design Window ကို Portrait / Landscape အလိုက် ပေါ်လာအောင် ပြုလုပ်ခြင်း
-            OpenCardDesignWindow(isLandscape);
+            if (string.IsNullOrWhiteSpace(txtProjectName.Text))
+            {
+                MessageBox.Show("Please enter a project name.", "Validation Error", MessageBoxButton.OK, MessageBoxImage.Warning);
+                return;
+            }
+
+            DialogResult = true;
+            Close();
         }
 
-        // ၃။ Report Design ရွေးချယ်ထားပါက
-        if (createReportDesign)
+        private void btnCancel_Click(object sender, RoutedEventArgs e)
         {
-            // Report Design Window သို့မဟုတ် Tab ကို ပေါ်လာအောင် ပြုလုပ်ခြင်း
-            OpenReportDesignWindow();
+            DialogResult = false;
+            Close();
         }
     }
 }
