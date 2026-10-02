@@ -1,1 +1,19 @@
-
+<Window x:Class="IDCardStudio.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="ID Card Studio" Height="450" Width="800"
+        WindowStartupLocation="CenterScreen">
+    <Grid>
+        <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
+            <TextBlock Text="Welcome to ID Card Studio" 
+                       FontSize="24" 
+                       FontWeight="Bold" 
+                       HorizontalAlignment="Center" 
+                       Margin="0,0,0,20"/>
+            <Button Content="Click Me" 
+                    Width="120" 
+                    Height="35" 
+                    Click="Button_Click"/>
+        </StackPanel>
+    </Grid>
+</Window>
