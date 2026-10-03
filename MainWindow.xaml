@@ -9,25 +9,55 @@
     <DockPanel>
         <!-- Menu Bar -->
         <Menu DockPanel.Dock="Top" Background="#F0F0F0" Padding="2">
-            <!-- File Menu -->
+            
+            <!-- 1. File Menu -->
             <MenuItem Header="_File">
                 <MenuItem Header="_New Project..." InputGestureText="Ctrl+N" Click="NewProject_Click"/>
                 <MenuItem Header="_Open Project..." InputGestureText="Ctrl+O" Click="OpenProject_Click"/>
+                <MenuItem Header="_Close Project" Click="CloseProject_Click"/>
                 <Separator/>
-                <MenuItem Header="Recent File" IsEnabled="False"/>
+                <MenuItem Header="_Save Project" InputGestureText="Ctrl+S" Click="SaveProject_Click"/>
+                <MenuItem Header="Save Project _As..." Click="SaveProjectAs_Click"/>
+                <Separator/>
+                <MenuItem Header="Project _Properties..." InputGestureText="F7"/>
+                <Separator/>
+                <MenuItem Header="_Print Sample Card..." InputGestureText="Ctrl+P"/>
+                <MenuItem Header="Preview Sample _Report..." IsEnabled="False"/>
+                <MenuItem Header="Report Page Set_up..." IsEnabled="False"/>
+                <Separator/>
+                <MenuItem Header="_Delete Project"/>
+                <Separator/>
+                <MenuItem Header="1 C:\Users\...\Sample\Sample.iwp" IsEnabled="False"/>
                 <Separator/>
                 <MenuItem Header="E_xit" Click="Exit_Click"/>
             </MenuItem>
 
-            <!-- Dynamic Menus -->
-            <MenuItem x:Name="EditMenu" Header="_Edit" Visibility="Collapsed"/>
-            <MenuItem x:Name="InsertMenu" Header="_Insert" Visibility="Collapsed"/>
-            <MenuItem x:Name="FormatMenu" Header="F_ormat" Visibility="Collapsed"/>
-            <MenuItem x:Name="WindowMenu" Header="_Window" Visibility="Collapsed"/>
+            <!-- 2. Edit Menu -->
+            <MenuItem x:Name="EditMenu" Header="_Edit" Visibility="Collapsed">
+                <MenuItem Header="_Undo" InputGestureText="Ctrl+Z" IsEnabled="False"/>
+                <MenuItem Header="_Redo" InputGestureText="Ctrl+Y" IsEnabled="False"/>
+                <Separator/>
+                <MenuItem Header="Cu_t Fields" InputGestureText="Ctrl+X" IsEnabled="False"/>
+                <MenuItem Header="_Copy Fields" InputGestureText="Ctrl+C" IsEnabled="False"/>
+                <MenuItem Header="_Paste Fields" InputGestureText="Ctrl+V" IsEnabled="False"/>
+                <Separator/>
+                <MenuItem Header="Select _Fields..." IsEnabled="False"/>
+                <MenuItem Header="Select _All Fields" InputGestureText="Ctrl+A" IsEnabled="False"/>
+                <Separator/>
+                <MenuItem Header="Field _Properties..." InputGestureText="Ctrl+F" IsEnabled="False"/>
+                <MenuItem Header="_Multi-field Text Properties..."/>
+                <MenuItem Header="Multi-field _Prompt Properties..."/>
+                <MenuItem Header="P_roduction Form Properties..." InputGestureText="F6"/>
+                <Separator/>
+                <MenuItem Header="Field Tab Or_der" InputGestureText="Ctrl+B" IsEnabled="False"/>
+                <Separator/>
+                <MenuItem Header="Delete Selected Fi_elds" InputGestureText="Del" IsEnabled="False"/>
+                <MenuItem Header="Delete Production Form"/>
+            </MenuItem>
 
-            <!-- View Menu -->
+            <!-- 3. View Menu -->
             <MenuItem Header="_View">
-                <MenuItem Header="Toolbars">
+                <MenuItem Header="_Toolbars">
                     <MenuItem Header="Project Toolbar" IsCheckable="True" IsChecked="True"/>
                     <MenuItem Header="Edit Toolbar" IsCheckable="True" IsChecked="True"/>
                     <MenuItem Header="View Toolbar" IsCheckable="True" IsChecked="True"/>
@@ -39,10 +69,111 @@
                     <MenuItem Header="Large Toolbar Buttons" IsCheckable="True" IsChecked="True"/>
                     <MenuItem Header="Small Toolbar Buttons" IsCheckable="True"/>
                 </MenuItem>
+                <Separator/>
+                <MenuItem Header="Field _Names" InputGestureText="Ctrl+H"/>
+                <MenuItem Header="_Sample Data" InputGestureText="Ctrl+M" IsCheckable="True" IsChecked="True"/>
+                <Separator/>
+                <MenuItem Header="_Card..."/>
+                <MenuItem Header="_Report..."/>
+                <MenuItem Header="_Production Form"/>
+                <MenuItem Header="Field Connector"/>
+                <Separator/>
+                <MenuItem Header="Front of Selected Card" IsEnabled="False"/>
+                <MenuItem Header="Back of Selected Card" IsEnabled="False"/>
+                <Separator/>
+                <MenuItem Header="Ruler for Selected Card Side" IsCheckable="True" IsChecked="True" IsEnabled="False"/>
+                <Separator/>
                 <MenuItem Header="Show Welcome on startup" IsCheckable="True" IsChecked="True"/>
             </MenuItem>
 
-            <!-- Help Menu -->
+            <!-- 4. Insert Menu -->
+            <MenuItem x:Name="InsertMenu" Header="_Insert" Visibility="Collapsed">
+                <MenuItem Header="_Text Field" InputGestureText="Ctrl+T"/>
+                <MenuItem Header="_Photo Field" InputGestureText="Ctrl+J"/>
+                <MenuItem Header="_Date Field" InputGestureText="Ctrl+D"/>
+                <MenuItem Header="_Signature Field" InputGestureText="Ctrl+I"/>
+                <Separator/>
+                <MenuItem Header="_List Field" InputGestureText="Ctrl+L"/>
+                <MenuItem Header="_Composite Field"/>
+                <MenuItem Header="P_rint Count Field"/>
+                <MenuItem Header="_Auto Sequence Field"/>
+                <MenuItem Header="C_heck Box Field"/>
+                <MenuItem Header="Bina_ry Field"/>
+                <MenuItem Header="_Event Button"/>
+                <Separator/>
+                <MenuItem Header="Bar Code Field" IsEnabled="False"/>
+                <MenuItem Header="Magnetic Stripe Field" IsEnabled="False"/>
+                <MenuItem Header="Smart Card Field" IsEnabled="False"/>
+                <Separator/>
+                <MenuItem Header="Static Te_xt Field" InputGestureText="Ctrl+E"/>
+                <MenuItem Header="Static _Graphic Field" InputGestureText="Ctrl+G"/>
+                <MenuItem Header="Non-Printable Area" IsEnabled="False"/>
+                <Separator/>
+                <MenuItem Header="_Card">
+                    <MenuItem Header="New card"/>
+                    <MenuItem Header="From Template..."/>
+                </MenuItem>
+                <MenuItem Header="Production Form" IsEnabled="False"/>
+                <MenuItem Header="_Report">
+                    <MenuItem Header="New report"/>
+                    <MenuItem Header="From Template..."/>
+                </MenuItem>
+            </MenuItem>
+
+            <!-- 5. Format Menu -->
+            <MenuItem x:Name="FormatMenu" Header="F_ormat" Visibility="Collapsed">
+                <MenuItem Header="_Align Fields">
+                    <MenuItem Header="Left" InputGestureText="Ctrl+Left Arrow" IsEnabled="False"/>
+                    <MenuItem Header="Right" InputGestureText="Ctrl+Right Arrow" IsEnabled="False"/>
+                    <MenuItem Header="Top" InputGestureText="Ctrl+Up Arrow" IsEnabled="False"/>
+                    <MenuItem Header="Bottom" InputGestureText="Ctrl+Down Arrow" IsEnabled="False"/>
+                </MenuItem>
+                <MenuItem Header="_Center Field(s)">
+                    <MenuItem Header="Horizontal" InputGestureText="Ctrl+F9" IsEnabled="False"/>
+                    <MenuItem Header="Vertical" InputGestureText="Ctrl+Shift+F9" IsEnabled="False"/>
+                </MenuItem>
+                <MenuItem Header="_Space Fields Evenly">
+                    <MenuItem Header="Across" InputGestureText="Alt+Right Arrow" IsEnabled="False"/>
+                    <MenuItem Header="Down" InputGestureText="Alt+Down Arrow" IsEnabled="False"/>
+                </MenuItem>
+                <MenuItem Header="_Make Fields Same Size">
+                    <MenuItem Header="Width" InputGestureText="Ctrl+F7" IsEnabled="False"/>
+                    <MenuItem Header="Height" InputGestureText="Ctrl+Shift+F7" IsEnabled="False"/>
+                    <MenuItem Header="Both" InputGestureText="Alt+F7" IsEnabled="False"/>
+                </MenuItem>
+                <Separator/>
+                <MenuItem Header="Bring Field to Front" IsEnabled="False"/>
+                <MenuItem Header="Bring Field Forward" IsEnabled="False"/>
+                <MenuItem Header="Send Field to Back" IsEnabled="False"/>
+                <MenuItem Header="Send Field Backward" IsEnabled="False"/>
+                <Separator/>
+                <MenuItem Header="Rotate Field on Production Form" InputGestureText="Ctrl+R" IsEnabled="False"/>
+                <Separator/>
+                <MenuItem Header="Set Static Graphic to Original Size" IsEnabled="False"/>
+                <Separator/>
+                <MenuItem Header="Keep Fields Proportional when Dragging Corner"/>
+                <MenuItem Header="Do Not Keep Fields Proportional when Dragging Corner" IsCheckable="True" IsChecked="True"/>
+                <Separator/>
+                <MenuItem Header="Orientation of Selected Card Side">
+                    <MenuItem Header="Landscape" IsCheckable="True" IsChecked="True"/>
+                    <MenuItem Header="Portrait" IsCheckable="True"/>
+                </MenuItem>
+            </MenuItem>
+
+            <!-- 6. Tools Menu -->
+            <MenuItem x:Name="ToolsMenu" Header="_Tools" Visibility="Collapsed">
+                <MenuItem Header="Production Options..."/>
+                <MenuItem Header="User Options..."/>
+            </MenuItem>
+
+            <!-- 7. Window Menu -->
+            <MenuItem x:Name="WindowMenu" Header="_Window" Visibility="Collapsed">
+                <MenuItem Header="Cascade"/>
+                <MenuItem Header="Tile Horizontally"/>
+                <MenuItem Header="Tile Vertically"/>
+            </MenuItem>
+
+            <!-- 8. Help Menu -->
             <MenuItem Header="_Help">
                 <MenuItem Header="Online Help..." InputGestureText="F1" Click="OnlineHelp_Click"/>
                 <Separator/>
