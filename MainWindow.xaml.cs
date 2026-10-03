@@ -7,85 +7,69 @@ namespace IDCardStudio
         public MainWindow()
         {
             InitializeComponent();
-            SetProjectOpenState(false);
         }
 
+        // File menu အောက်မှ New Project ကို နှိပ်သည့် Event Handler
         private void NewProject_Click(object sender, RoutedEventArgs e)
         {
-            NewProjectWindow dlg = new NewProjectWindow();
-            dlg.Owner = this;
+            NewProjectWindow dialog = new NewProjectWindow();
+            dialog.Owner = this;
 
-            if (dlg.ShowDialog() == true)
+            if (dialog.ShowDialog() == true)
             {
-                SetProjectOpenState(true);
-                
-                string projectName = string.IsNullOrWhiteSpace(dlg.txtProjectName.Text) ? "Sample" : dlg.txtProjectName.Text;
-                this.Title = $"Datacard ID Works Enterprise Designer - [{projectName}.iwp]";
+                // Title ကို Project Name အတိုင်း ပြောင်းလဲပေးခြင်း
+                this.Title = $"Datacard ID Works Enterprise Designer - {dialog.ProjectName}";
+
+                // 1. Production Form Design ရွေးထားပါက Production Form Window ကို ဖွင့်ပေးမည်
+                if (dialog.IsProductionFormSelected)
+                {
+                    OpenProductionFormWindow();
+                }
+
+                // 2. Card Design ရွေးထားပါက Card နှင့် Card (back side) Window များကို ဖွင့်ပေးမည်
+                if (dialog.IsCardDesignSelected)
+                {
+                    OpenCardDesignWindows(dialog.IsLandscape, dialog.IsMultiCardSelected);
+                }
+
+                // 3. Report Design ရွေးထားပါက Report Design Window ကို ဖွင့်ပေးမည်
+                if (dialog.IsReportDesignSelected)
+                {
+                    OpenReportDesignWindow();
+                }
             }
         }
 
-        private void CloseProject_Click(object sender, RoutedEventArgs e)
+        private void OpenProductionFormWindow()
         {
-            SetProjectOpenState(false);
-            this.Title = "Datacard ID Works Enterprise Designer";
+            // Production Form Window ဖန်တီး၍ Main Window (MDI Container) အတွင်း ထည့်သွင်းခြင်း
+            // WPF MDI Container Control (ဥပမာ - WPFBagging / AvalonDock / Canvas) သို့မဟုတ် Child Window ကို သုံးနိုင်ပါသည်
+            
+            /* Example Code structure:
+            ProductionFormWindow formWin = new ProductionFormWindow();
+            formWin.Title = "Production Form";
+            mdiContainer.Children.Add(formWin);
+            */
         }
 
-        private void OpenProject_Click(object sender, RoutedEventArgs e)
+        private void OpenCardDesignWindows(bool isLandscape, bool isMultiCard)
         {
-            SetProjectOpenState(true);
+            // Card Front Design Window
+            /*
+            CardDesignWindow cardFront = new CardDesignWindow(isLandscape);
+            cardFront.Title = "Card";
+            mdiContainer.Children.Add(cardFront);
+
+            // Card Back Side Design Window
+            CardDesignWindow cardBack = new CardDesignWindow(isLandscape);
+            cardBack.Title = "Card (back side)";
+            mdiContainer.Children.Add(cardBack);
+            */
         }
 
-        private void SaveProject_Click(object sender, RoutedEventArgs e)
+        private void OpenReportDesignWindow()
         {
-            MessageBox.Show("Save Project feature clicked.", "Save Project", MessageBoxButton.OK, MessageBoxImage.Information);
-        }
-
-        private void SaveProjectAs_Click(object sender, RoutedEventArgs e)
-        {
-            MessageBox.Show("Save Project As feature clicked.", "Save Project As", MessageBoxButton.OK, MessageBoxImage.Information);
-        }
-
-        private void Exit_Click(object sender, RoutedEventArgs e)
-        {
-            Application.Current.Shutdown();
-        }
-
-        private void SetProjectOpenState(bool isOpen)
-        {
-            Visibility state = isOpen ? Visibility.Visible : Visibility.Collapsed;
-
-            EditMenu.Visibility = state;
-            InsertMenu.Visibility = state;
-            FormatMenu.Visibility = state;
-            ToolsMenu.Visibility = state;
-            WindowMenu.Visibility = state;
-
-            menuCloseProject.Visibility = state;
-            sep1.Visibility = state;
-            menuSaveProject.Visibility = state;
-            menuSaveProjectAs.Visibility = state;
-            sep2.Visibility = state;
-            menuProjectProperties.Visibility = state;
-            sep3.Visibility = state;
-            menuPrintSampleCard.Visibility = state;
-            menuPreviewSampleReport.Visibility = state;
-            menuReportPageSetup.Visibility = state;
-            sep4.Visibility = state;
-            menuDeleteProject.Visibility = state;
-
-            sepView1.Visibility = state;
-            menuFieldNames.Visibility = state;
-            menuSampleData.Visibility = state;
-            sepView2.Visibility = state;
-            menuCard.Visibility = state;
-            menuReport.Visibility = state;
-            menuProductionForm.Visibility = state;
-            menuFieldConnector.Visibility = state;
-            sepView3.Visibility = state;
-            menuFrontCard.Visibility = state;
-            menuBackCard.Visibility = state;
-            sepView4.Visibility = state;
-            menuRuler.Visibility = state;
+            // Report Design Window ဖွင့်ရန် Code
         }
     }
 }
