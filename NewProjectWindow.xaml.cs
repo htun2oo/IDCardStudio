@@ -5,7 +5,7 @@ namespace IDCardStudio
     public partial class NewProjectWindow : Window
     {
         // Selected values များကို ရယူနိုင်ရန် Property များ သတ်မှတ်ခြင်း
-        public string ProjectName { get; private set; }
+        public string ProjectName { get; private set; } = string.Empty;
         public bool IsProductionFormSelected { get; private set; }
         public bool IsCardDesignSelected { get; private set; }
         public bool IsLandscape { get; private set; }
