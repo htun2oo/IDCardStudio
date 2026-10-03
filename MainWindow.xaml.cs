@@ -12,8 +12,15 @@ namespace IDCardStudio
 
         private void NewProject_Click(object sender, RoutedEventArgs e)
         {
-            SetProjectOpenState(true);
-            this.Title = "Datacard ID Works Enterprise Designer - [Sample.iwp]";
+            // New Project Dialog Window ဖွင့်ခြင်း
+            NewProjectWindow dlg = new NewProjectWindow();
+            dlg.Owner = this;
+
+            if (dlg.ShowDialog() == true)
+            {
+                SetProjectOpenState(true);
+                this.Title = "Datacard ID Works Enterprise Designer - [Sample.iwp]";
+            }
         }
 
         private void CloseProject_Click(object sender, RoutedEventArgs e)
@@ -27,7 +34,6 @@ namespace IDCardStudio
             SetProjectOpenState(true);
         }
 
-        // Error ဖြစ်စေသော ပျောက်ဆုံးနေသည့် Method ၂ ခု
         private void SaveProject_Click(object sender, RoutedEventArgs e)
         {
             MessageBox.Show("Save Project feature clicked.", "Save Project", MessageBoxButton.OK, MessageBoxImage.Information);
