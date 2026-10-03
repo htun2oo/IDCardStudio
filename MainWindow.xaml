@@ -12,9 +12,33 @@
             <MenuItem Header="_File">
                 <MenuItem Header="_New Project..." InputGestureText="Ctrl+N" Click="NewProject_Click"/>
                 <MenuItem Header="_Open Project..." InputGestureText="Ctrl+O" Click="OpenProject_Click"/>
-                <Separator/>
-                <MenuItem Header="Recent File" IsEnabled="False"/>
-                <Separator/>
+                
+                <!-- Project ဖွင့်ထားချိန်မှ ပေါ်မည့် File Menu Items များ -->
+                <MenuItem x:Name="menuCloseProject" Header="_Close Project" Visibility="Collapsed" Click="CloseProject_Click"/>
+                <Separator x:Name="sep1"/>
+                
+                <MenuItem x:Name="menuSaveProject" Header="_Save Project" InputGestureText="Ctrl+S" Visibility="Collapsed" Click="SaveProject_Click"/>
+                <MenuItem x:Name="menuSaveProjectAs" Header="Save Project _As..." Visibility="Collapsed" Click="SaveProjectAs_Click"/>
+                <Separator x:Name="sep2" Visibility="Collapsed"/>
+
+                <MenuItem x:Name="menuProjectProperties" Header="_Project Properties..." InputGestureText="F7" Visibility="Collapsed"/>
+                <Separator x:Name="sep3" Visibility="Collapsed"/>
+
+                <MenuItem x:Name="menuPrintSampleCard" Header="_Print Sample Card..." InputGestureText="Ctrl+P" Visibility="Collapsed"/>
+                <MenuItem x:Name="menuPreviewSampleReport" Header="Preview Sample Report..." IsEnabled="False" Visibility="Collapsed"/>
+                <MenuItem x:Name="menuReportPageSetup" Header="Report Page Setup..." IsEnabled="False" Visibility="Collapsed"/>
+                <Separator x:Name="sep4" Visibility="Collapsed"/>
+
+                <MenuItem x:Name="menuDeleteProject" Header="_Delete Project" Visibility="Collapsed"/>
+                <Separator x:Name="sep5" Visibility="Collapsed"/>
+
+                <!-- Project မဖွင့်မီ ပေါ်မည့် Recent File -->
+                <MenuItem x:Name="menuRecentFileDisabled" Header="Recent File" IsEnabled="False"/>
+
+                <!-- Project ဖွင့်ထားချိန် ပေါ်မည့် Recent File Path -->
+                <MenuItem x:Name="menuRecentFilePath" Header="1 C:\Users\...\Sample\Sample.iwp" Visibility="Collapsed"/>
+                <Separator x:Name="sep6"/>
+
                 <MenuItem Header="E_xit" Click="Exit_Click"/>
             </MenuItem>
 
