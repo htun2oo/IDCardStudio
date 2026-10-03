@@ -12,14 +12,15 @@ namespace IDCardStudio
 
         private void NewProject_Click(object sender, RoutedEventArgs e)
         {
-            // New Project Dialog Window ဖွင့်ခြင်း
             NewProjectWindow dlg = new NewProjectWindow();
             dlg.Owner = this;
 
             if (dlg.ShowDialog() == true)
             {
                 SetProjectOpenState(true);
-                this.Title = "Datacard ID Works Enterprise Designer - [Sample.iwp]";
+                
+                string projectName = string.IsNullOrWhiteSpace(dlg.txtProjectName.Text) ? "Sample" : dlg.txtProjectName.Text;
+                this.Title = $"Datacard ID Works Enterprise Designer - [{projectName}.iwp]";
             }
         }
 
