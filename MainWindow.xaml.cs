@@ -7,87 +7,27 @@ namespace IDCardStudio
         public MainWindow()
         {
             InitializeComponent();
+            // ပထမအဆင့် (Initial State) ဖြင့် စတင်မည်
+            SetProjectOpenState(false);
         }
 
-        // --- File Menu Events ---
         private void NewProject_Click(object sender, RoutedEventArgs e)
         {
-            NewProjectWindow dialog = new NewProjectWindow();
-            dialog.Owner = this;
-
-            if (dialog.ShowDialog() == true)
-            {
-                this.Title = $"Datacard ID Works Enterprise Designer - {dialog.ProjectName} - [Card]";
-
-                WorkspaceGrid.Visibility = Visibility.Visible;
-
-                // Window များ ဖွင့်လှစ်ခြင်း
-                ProductionFormWindow.Visibility = dialog.IncludeProductionForm ? Visibility.Visible : Visibility.Collapsed;
-                CardDesignWindow.Visibility = dialog.IncludeCardDesign ? Visibility.Visible : Visibility.Collapsed;
-                CardFrontWindow.Visibility = dialog.IncludeCardDesign ? Visibility.Visible : Visibility.Collapsed;
-                CardBackWindow.Visibility = dialog.IncludeCardDesign ? Visibility.Visible : Visibility.Collapsed;
-                ReportDesignWindow.Visibility = dialog.IncludeReportDesign ? Visibility.Visible : Visibility.Collapsed;
-
-                // Minimized Bar များကို ဖျောက်ထားခြင်း
-                minProdWindow.Visibility = Visibility.Collapsed;
-                minCardFrontWindow.Visibility = Visibility.Collapsed;
-                minCardBackWindow.Visibility = Visibility.Collapsed;
-                minReportWindow.Visibility = Visibility.Collapsed;
-
-                // CR80 Standard Canvas Size သတ်မှတ်ခြင်း
-                if (dialog.IncludeCardDesign)
-                {
-                    if (dialog.IsLandscape)
-                    {
-                        // CR80 Landscape Size
-                        CardFrontCanvas.Width = 238;
-                        CardFrontCanvas.Height = 150;
-                        CardBackCanvas.Width = 238;
-                        CardBackCanvas.Height = 150;
-                    }
-                    else
-                    {
-                        // CR80 Portrait Size
-                        CardFrontCanvas.Width = 150;
-                        CardFrontCanvas.Height = 238;
-                        CardBackCanvas.Width = 150;
-                        CardBackCanvas.Height = 238;
-                    }
-                }
-
-                // New Project ဖွင့်လိုက်လျှင် Hidden Menus များကို ပြသပေးခြင်း
-                EditMenu.Visibility = Visibility.Visible;
-                InsertMenu.Visibility = Visibility.Visible;
-                FormatMenu.Visibility = Visibility.Visible;
-                ToolsMenu.Visibility = Visibility.Visible;
-                WindowMenu.Visibility = Visibility.Visible;
-            }
-        }
-
-        private void OpenProject_Click(object sender, RoutedEventArgs e)
-        {
-            MessageBox.Show("Open Project feature will be implemented.", "Open Project", MessageBoxButton.OK, MessageBoxImage.Information);
+            // New Project စတင်လိုက်သောအခါ မီနူးများ အားလုံးကို တတိယပုံအတိုင်း ပွင့်စေမည်
+            SetProjectOpenState(true);
+            this.Title = "Datacard ID Works Enterprise Designer - [Sample.iwp]";
         }
 
         private void CloseProject_Click(object sender, RoutedEventArgs e)
         {
-            WorkspaceGrid.Visibility = Visibility.Collapsed;
-            EditMenu.Visibility = Visibility.Collapsed;
-            InsertMenu.Visibility = Visibility.Collapsed;
-            FormatMenu.Visibility = Visibility.Collapsed;
-            ToolsMenu.Visibility = Visibility.Collapsed;
-            WindowMenu.Visibility = Visibility.Collapsed;
+            // Project ပိတ်လိုက်ပါက ပထမအဆင့် မီနူးများအတိုင်း ပြန်ဖြစ်သွားမည်
+            SetProjectOpenState(false);
             this.Title = "Datacard ID Works Enterprise Designer";
         }
 
-        private void SaveProject_Click(object sender, RoutedEventArgs e)
+        private void OpenProject_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("Save Project feature will be implemented.", "Save Project", MessageBoxButton.OK, MessageBoxImage.Information);
-        }
-
-        private void SaveProjectAs_Click(object sender, RoutedEventArgs e)
-        {
-            MessageBox.Show("Save Project As feature will be implemented.", "Save Project As", MessageBoxButton.OK, MessageBoxImage.Information);
+            SetProjectOpenState(true);
         }
 
         private void Exit_Click(object sender, RoutedEventArgs e)
@@ -95,111 +35,48 @@ namespace IDCardStudio
             Application.Current.Shutdown();
         }
 
-        // --- Help Menu Events ---
-        private void OnlineHelp_Click(object sender, RoutedEventArgs e)
+        /// <summary>
+        /// Project ပွင့်နေချိန် နှင့် မပွင့်သေးချိန် မီနူးများ၏ Visibility ကို ထိန်းချုပ်သည့် Function
+        /// </summary>
+        private void SetProjectOpenState(bool isOpen)
         {
-            MessageBox.Show("Online Help feature will open the documentation.", "Online Help", MessageBoxButton.OK, MessageBoxImage.Information);
-        }
+            Visibility state = isOpen ? Visibility.Visible : Visibility.Collapsed;
 
-        private void About_Click(object sender, RoutedEventArgs e)
-        {
-            MessageBox.Show("Datacard ID Works Enterprise Designer\nVersion 1.0", "About Application", MessageBoxButton.OK, MessageBoxImage.Information);
-        }
+            // 1. Menu Bar ပေါ်မှ Main Menus များ ပြသ/ဖျောက် လုပ်ခြင်း
+            EditMenu.Visibility = state;
+            InsertMenu.Visibility = state;
+            FormatMenu.Visibility = state;
+            ToolsMenu.Visibility = state;
+            WindowMenu.Visibility = state;
 
-        // --- Production Form Window Logic ---
-        private void btnMinProduction_Click(object sender, RoutedEventArgs e)
-        {
-            ProductionFormWindow.Visibility = Visibility.Collapsed;
-            minProdWindow.Visibility = Visibility.Visible;
-        }
+            // 2. File Menu အတွင်းမှ Extra Items များ ပြသ/ဖျောက် လုပ်ခြင်း
+            menuCloseProject.Visibility = state;
+            sep1.Visibility = state;
+            menuSaveProject.Visibility = state;
+            menuSaveProjectAs.Visibility = state;
+            sep2.Visibility = state;
+            menuProjectProperties.Visibility = state;
+            sep3.Visibility = state;
+            menuPrintSampleCard.Visibility = state;
+            menuPreviewSampleReport.Visibility = state;
+            menuReportPageSetup.Visibility = state;
+            sep4.Visibility = state;
+            menuDeleteProject.Visibility = state;
 
-        private void btnRestoreProduction_Click(object sender, RoutedEventArgs e)
-        {
-            ProductionFormWindow.Visibility = Visibility.Visible;
-            minProdWindow.Visibility = Visibility.Collapsed;
-        }
-
-        private void btnMaxProduction_Click(object sender, RoutedEventArgs e)
-        {
-            btnRestoreProduction_Click(sender, e);
-        }
-
-        private void btnCloseProduction_Click(object sender, RoutedEventArgs e)
-        {
-            ProductionFormWindow.Visibility = Visibility.Collapsed;
-            minProdWindow.Visibility = Visibility.Collapsed;
-        }
-
-        // --- Card Front Window Logic ---
-        private void btnMinCardFront_Click(object sender, RoutedEventArgs e)
-        {
-            CardFrontWindow.Visibility = Visibility.Collapsed;
-            minCardFrontWindow.Visibility = Visibility.Visible;
-        }
-
-        private void btnRestoreCardFront_Click(object sender, RoutedEventArgs e)
-        {
-            CardFrontWindow.Visibility = Visibility.Visible;
-            minCardFrontWindow.Visibility = Visibility.Collapsed;
-        }
-
-        private void btnMaxCardFront_Click(object sender, RoutedEventArgs e)
-        {
-            btnRestoreCardFront_Click(sender, e);
-        }
-
-        private void btnCloseCardFront_Click(object sender, RoutedEventArgs e)
-        {
-            CardFrontWindow.Visibility = Visibility.Collapsed;
-            minCardFrontWindow.Visibility = Visibility.Collapsed;
-        }
-
-        // --- Card Back Window Logic ---
-        private void btnMinCardBack_Click(object sender, RoutedEventArgs e)
-        {
-            CardBackWindow.Visibility = Visibility.Collapsed;
-            minCardBackWindow.Visibility = Visibility.Visible;
-        }
-
-        private void btnRestoreCardBack_Click(object sender, RoutedEventArgs e)
-        {
-            CardBackWindow.Visibility = Visibility.Visible;
-            minCardBackWindow.Visibility = Visibility.Collapsed;
-        }
-
-        private void btnMaxCardBack_Click(object sender, RoutedEventArgs e)
-        {
-            btnRestoreCardBack_Click(sender, e);
-        }
-
-        private void btnCloseCardBack_Click(object sender, RoutedEventArgs e)
-        {
-            CardBackWindow.Visibility = Visibility.Collapsed;
-            minCardBackWindow.Visibility = Visibility.Collapsed;
-        }
-
-        // --- Report Design Window Logic ---
-        private void btnMinReport_Click(object sender, RoutedEventArgs e)
-        {
-            ReportDesignWindow.Visibility = Visibility.Collapsed;
-            minReportWindow.Visibility = Visibility.Visible;
-        }
-
-        private void btnRestoreReport_Click(object sender, RoutedEventArgs e)
-        {
-            ReportDesignWindow.Visibility = Visibility.Visible;
-            minReportWindow.Visibility = Visibility.Collapsed;
-        }
-
-        private void btnMaxReport_Click(object sender, RoutedEventArgs e)
-        {
-            btnRestoreReport_Click(sender, e);
-        }
-
-        private void btnCloseReport_Click(object sender, RoutedEventArgs e)
-        {
-            ReportDesignWindow.Visibility = Visibility.Collapsed;
-            minReportWindow.Visibility = Visibility.Collapsed;
+            // 3. View Menu အတွင်းမှ Extra Items များ ပြသ/ဖျောက် လုပ်ခြင်း
+            sepView1.Visibility = state;
+            menuFieldNames.Visibility = state;
+            menuSampleData.Visibility = state;
+            sepView2.Visibility = state;
+            menuCard.Visibility = state;
+            menuReport.Visibility = state;
+            menuProductionForm.Visibility = state;
+            menuFieldConnector.Visibility = state;
+            sepView3.Visibility = state;
+            menuFrontCard.Visibility = state;
+            menuBackCard.Visibility = state;
+            sepView4.Visibility = state;
+            menuRuler.Visibility = state;
         }
     }
 }
