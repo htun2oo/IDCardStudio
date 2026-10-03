@@ -14,25 +14,28 @@
             <MenuItem Header="_File">
                 <MenuItem Header="_New Project..." InputGestureText="Ctrl+N" Click="NewProject_Click"/>
                 <MenuItem Header="_Open Project..." InputGestureText="Ctrl+O" Click="OpenProject_Click"/>
-                <MenuItem Header="_Close Project" Click="CloseProject_Click"/>
-                <Separator/>
-                <MenuItem Header="_Save Project" InputGestureText="Ctrl+S" Click="SaveProject_Click"/>
-                <MenuItem Header="Save Project _As..." Click="SaveProjectAs_Click"/>
-                <Separator/>
-                <MenuItem Header="Project _Properties..." InputGestureText="F7"/>
-                <Separator/>
-                <MenuItem Header="_Print Sample Card..." InputGestureText="Ctrl+P"/>
-                <MenuItem Header="Preview Sample _Report..." IsEnabled="False"/>
-                <MenuItem Header="Report Page Set_up..." IsEnabled="False"/>
-                <Separator/>
-                <MenuItem Header="_Delete Project"/>
-                <Separator/>
+                
+                <!-- Project Open ဖြစ်မှသာ မြင်ရမည့် File Items များ -->
+                <MenuItem x:Name="menuCloseProject" Header="_Close Project" Click="CloseProject_Click" Visibility="Collapsed"/>
+                <Separator x:Name="sep1" Visibility="Collapsed"/>
+                <MenuItem x:Name="menuSaveProject" Header="_Save Project" InputGestureText="Ctrl+S" Click="SaveProject_Click" Visibility="Collapsed"/>
+                <MenuItem x:Name="menuSaveProjectAs" Header="Save Project _As..." Click="SaveProjectAs_Click" Visibility="Collapsed"/>
+                <Separator x:Name="sep2" Visibility="Collapsed"/>
+                <MenuItem x:Name="menuProjectProperties" Header="Project _Properties..." InputGestureText="F7" Visibility="Collapsed"/>
+                <Separator x:Name="sep3" Visibility="Collapsed"/>
+                <MenuItem x:Name="menuPrintSampleCard" Header="_Print Sample Card..." InputGestureText="Ctrl+P" Visibility="Collapsed"/>
+                <MenuItem x:Name="menuPreviewSampleReport" Header="Preview Sample _Report..." IsEnabled="False" Visibility="Collapsed"/>
+                <MenuItem x:Name="menuReportPageSetup" Header="Report Page Set_up..." IsEnabled="False" Visibility="Collapsed"/>
+                <Separator x:Name="sep4" Visibility="Collapsed"/>
+                <MenuItem x:Name="menuDeleteProject" Header="_Delete Project" Visibility="Collapsed"/>
+                
+                <Separator x:Name="sep5"/>
                 <MenuItem Header="1 C:\Users\...\Sample\Sample.iwp" IsEnabled="False"/>
                 <Separator/>
                 <MenuItem Header="E_xit" Click="Exit_Click"/>
             </MenuItem>
 
-            <!-- 2. Edit Menu -->
+            <!-- 2. Edit Menu (New Project ဖွင့်မှသာ ပေါ်မည်) -->
             <MenuItem x:Name="EditMenu" Header="_Edit" Visibility="Collapsed">
                 <MenuItem Header="_Undo" InputGestureText="Ctrl+Z" IsEnabled="False"/>
                 <MenuItem Header="_Redo" InputGestureText="Ctrl+Y" IsEnabled="False"/>
@@ -69,24 +72,27 @@
                     <MenuItem Header="Large Toolbar Buttons" IsCheckable="True" IsChecked="True"/>
                     <MenuItem Header="Small Toolbar Buttons" IsCheckable="True"/>
                 </MenuItem>
+                
+                <!-- Initial State တွင် ခေတ္တဖျောက်ထားမည့် View Items များ -->
+                <Separator x:Name="sepView1" Visibility="Collapsed"/>
+                <MenuItem x:Name="menuFieldNames" Header="Field _Names" InputGestureText="Ctrl+H" Visibility="Collapsed"/>
+                <MenuItem x:Name="menuSampleData" Header="_Sample Data" InputGestureText="Ctrl+M" IsCheckable="True" IsChecked="True" Visibility="Collapsed"/>
+                <Separator x:Name="sepView2" Visibility="Collapsed"/>
+                <MenuItem x:Name="menuCard" Header="_Card..." Visibility="Collapsed"/>
+                <MenuItem x:Name="menuReport" Header="_Report..." Visibility="Collapsed"/>
+                <MenuItem x:Name="menuProductionForm" Header="_Production Form" Visibility="Collapsed"/>
+                <MenuItem x:Name="menuFieldConnector" Header="Field Connector" Visibility="Collapsed"/>
+                <Separator x:Name="sepView3" Visibility="Collapsed"/>
+                <MenuItem x:Name="menuFrontCard" Header="Front of Selected Card" IsEnabled="False" Visibility="Collapsed"/>
+                <MenuItem x:Name="menuBackCard" Header="Back of Selected Card" IsEnabled="False" Visibility="Collapsed"/>
+                <Separator x:Name="sepView4" Visibility="Collapsed"/>
+                <MenuItem x:Name="menuRuler" Header="Ruler for Selected Card Side" IsCheckable="True" IsChecked="True" IsEnabled="False" Visibility="Collapsed"/>
                 <Separator/>
-                <MenuItem Header="Field _Names" InputGestureText="Ctrl+H"/>
-                <MenuItem Header="_Sample Data" InputGestureText="Ctrl+M" IsCheckable="True" IsChecked="True"/>
-                <Separator/>
-                <MenuItem Header="_Card..."/>
-                <MenuItem Header="_Report..."/>
-                <MenuItem Header="_Production Form"/>
-                <MenuItem Header="Field Connector"/>
-                <Separator/>
-                <MenuItem Header="Front of Selected Card" IsEnabled="False"/>
-                <MenuItem Header="Back of Selected Card" IsEnabled="False"/>
-                <Separator/>
-                <MenuItem Header="Ruler for Selected Card Side" IsCheckable="True" IsChecked="True" IsEnabled="False"/>
-                <Separator/>
+                
                 <MenuItem Header="Show Welcome on startup" IsCheckable="True" IsChecked="True"/>
             </MenuItem>
 
-            <!-- 4. Insert Menu -->
+            <!-- 4. Insert Menu (New Project ဖွင့်မှသာ ပေါ်မည်) -->
             <MenuItem x:Name="InsertMenu" Header="_Insert" Visibility="Collapsed">
                 <MenuItem Header="_Text Field" InputGestureText="Ctrl+T"/>
                 <MenuItem Header="_Photo Field" InputGestureText="Ctrl+J"/>
@@ -120,7 +126,7 @@
                 </MenuItem>
             </MenuItem>
 
-            <!-- 5. Format Menu -->
+            <!-- 5. Format Menu (New Project ဖွင့်မှသာ ပေါ်မည်) -->
             <MenuItem x:Name="FormatMenu" Header="F_ormat" Visibility="Collapsed">
                 <MenuItem Header="_Align Fields">
                     <MenuItem Header="Left" InputGestureText="Ctrl+Left Arrow" IsEnabled="False"/>
@@ -160,13 +166,13 @@
                 </MenuItem>
             </MenuItem>
 
-            <!-- 6. Tools Menu -->
+            <!-- 6. Tools Menu (New Project ဖွင့်မှသာ ပေါ်မည်) -->
             <MenuItem x:Name="ToolsMenu" Header="_Tools" Visibility="Collapsed">
                 <MenuItem Header="Production Options..."/>
                 <MenuItem Header="User Options..."/>
             </MenuItem>
 
-            <!-- 7. Window Menu -->
+            <!-- 7. Window Menu (New Project ဖွင့်မှသာ ပေါ်မည်) -->
             <MenuItem x:Name="WindowMenu" Header="_Window" Visibility="Collapsed">
                 <MenuItem Header="Cascade"/>
                 <MenuItem Header="Tile Horizontally"/>
@@ -175,175 +181,13 @@
 
             <!-- 8. Help Menu -->
             <MenuItem Header="_Help">
-                <MenuItem Header="Online Help..." InputGestureText="F1" Click="OnlineHelp_Click"/>
+                <MenuItem Header="Online Help..." InputGestureText="F1"/>
                 <Separator/>
-                <MenuItem Header="About..." Click="About_Click"/>
+                <MenuItem Header="About..."/>
             </MenuItem>
         </Menu>
 
-        <!-- Work Area Container -->
-        <Grid Background="#7F7F7F">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="Auto"/>
-            </Grid.RowDefinitions>
-
-            <!-- Workspace Main Content -->
-            <Grid Grid.Row="0" x:Name="WorkspaceGrid" Visibility="Collapsed" Margin="2">
-                <Grid.ColumnDefinitions>
-                    <!-- Left Side: Production Form -->
-                    <ColumnDefinition x:Name="ProductionColumn" Width="1.2*" />
-                    <!-- Right Side: Cards & Reports Container -->
-                    <ColumnDefinition x:Name="RightColumn" Width="2*" />
-                </Grid.ColumnDefinitions>
-
-                <!-- 1. Production Form Window -->
-                <Border x:Name="ProductionFormWindow" Grid.Column="0" Margin="2" Background="#D4D0C8" BorderBrush="#808080" BorderThickness="1" Visibility="Collapsed">
-                    <DockPanel>
-                        <!-- Title Bar -->
-                        <Border DockPanel.Dock="Top" Background="#000080" Height="22" Padding="4,0,2,0">
-                            <Grid>
-                                <TextBlock Text="Production Form" Foreground="White" FontWeight="Bold" FontSize="11" VerticalAlignment="Center"/>
-                                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
-                                    <Button x:Name="btnMinProduction" Content="_" Width="16" Height="16" Margin="1" FontSize="9" Padding="0,-4,0,0" Click="btnMinProduction_Click"/>
-                                    <Button x:Name="btnMaxProduction" Content="□" Width="16" Height="16" Margin="1" FontSize="9" Padding="0,-2,0,0" Click="btnMaxProduction_Click"/>
-                                    <Button x:Name="btnCloseProduction" Content="X" Width="16" Height="16" Margin="1" FontSize="9" FontWeight="Bold" Click="btnCloseProduction_Click"/>
-                                </StackPanel>
-                            </Grid>
-                        </Border>
-                        <!-- Content -->
-                        <Grid Background="White" Margin="4"/>
-                    </DockPanel>
-                </Border>
-
-                <!-- Right Side Area (Card Windows + Report Window) -->
-                <Grid Grid.Column="1">
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="Auto" />
-                        <RowDefinition Height="*" />
-                    </Grid.RowDefinitions>
-
-                    <!-- Card Windows Area (Front & Back Side-by-Side) -->
-                    <Grid Grid.Row="0" x:Name="CardDesignWindow" Visibility="Collapsed">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="*" />
-                            <ColumnDefinition Width="*" />
-                        </Grid.ColumnDefinitions>
-
-                        <!-- Card Front Window -->
-                        <Border x:Name="CardFrontWindow" Grid.Column="0" Margin="2" Background="#D4D0C8" BorderBrush="#808080" BorderThickness="1">
-                            <DockPanel>
-                                <Border DockPanel.Dock="Top" Background="#000080" Height="22" Padding="4,0,2,0">
-                                    <Grid>
-                                        <TextBlock Text="Card" Foreground="White" FontWeight="Bold" FontSize="11" VerticalAlignment="Center"/>
-                                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
-                                            <Button x:Name="btnMinCardFront" Content="_" Width="16" Height="16" Margin="1" FontSize="9" Padding="0,-4,0,0" Click="btnMinCardFront_Click"/>
-                                            <Button x:Name="btnMaxCardFront" Content="□" Width="16" Height="16" Margin="1" FontSize="9" Padding="0,-2,0,0" Click="btnMaxCardFront_Click"/>
-                                            <Button x:Name="btnCloseCardFront" Content="X" Width="16" Height="16" Margin="1" FontSize="9" FontWeight="Bold" Click="btnCloseCardFront_Click"/>
-                                        </StackPanel>
-                                    </Grid>
-                                </Border>
-                                <Border Background="#A0A0A0" Padding="10">
-                                    <Border x:Name="CardFrontCanvas" Width="238" Height="150" Background="White" BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Center" VerticalAlignment="Center">
-                                        <TextBlock Text="[ Card Front - CR80 ]" Foreground="Gray" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                                    </Border>
-                                </Border>
-                            </DockPanel>
-                        </Border>
-
-                        <!-- Card Back Window -->
-                        <Border x:Name="CardBackWindow" Grid.Column="1" Margin="2" Background="#D4D0C8" BorderBrush="#808080" BorderThickness="1">
-                            <DockPanel>
-                                <Border DockPanel.Dock="Top" Background="#000080" Height="22" Padding="4,0,2,0">
-                                    <Grid>
-                                        <TextBlock Text="Card (back side)" Foreground="White" FontWeight="Bold" FontSize="11" VerticalAlignment="Center"/>
-                                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
-                                            <Button x:Name="btnMinCardBack" Content="_" Width="16" Height="16" Margin="1" FontSize="9" Padding="0,-4,0,0" Click="btnMinCardBack_Click"/>
-                                            <Button x:Name="btnMaxCardBack" Content="□" Width="16" Height="16" Margin="1" FontSize="9" Padding="0,-2,0,0" Click="btnMaxCardBack_Click"/>
-                                            <Button x:Name="btnCloseCardBack" Content="X" Width="16" Height="16" Margin="1" FontSize="9" FontWeight="Bold" Click="btnCloseCardBack_Click"/>
-                                        </StackPanel>
-                                    </Grid>
-                                </Border>
-                                <Border Background="#A0A0A0" Padding="10">
-                                    <Border x:Name="CardBackCanvas" Width="238" Height="150" Background="White" BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Center" VerticalAlignment="Center">
-                                        <TextBlock Text="[ Card Back - CR80 ]" Foreground="Gray" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                                    </Border>
-                                </Border>
-                            </DockPanel>
-                        </Border>
-                    </Grid>
-
-                    <!-- Report Design Window -->
-                    <Border Grid.Row="1" x:Name="ReportDesignWindow" Margin="2" Background="#D4D0C8" BorderBrush="#808080" BorderThickness="1" Visibility="Collapsed">
-                        <DockPanel>
-                            <Border DockPanel.Dock="Top" Background="#000080" Height="22" Padding="4,0,2,0">
-                                <Grid>
-                                    <TextBlock Text="Report Design" Foreground="White" FontWeight="Bold" FontSize="11" VerticalAlignment="Center"/>
-                                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
-                                        <Button x:Name="btnMinReport" Content="_" Width="16" Height="16" Margin="1" FontSize="9" Padding="0,-4,0,0" Click="btnMinReport_Click"/>
-                                        <Button x:Name="btnMaxReport" Content="□" Width="16" Height="16" Margin="1" FontSize="9" Padding="0,-2,0,0" Click="btnMaxReport_Click"/>
-                                        <Button x:Name="btnCloseReport" Content="X" Width="16" Height="16" Margin="1" FontSize="9" FontWeight="Bold" Click="btnCloseReport_Click"/>
-                                    </StackPanel>
-                                </Grid>
-                            </Border>
-                            <Grid Background="White" Margin="4"/>
-                        </DockPanel>
-                    </Border>
-                </Grid>
-            </Grid>
-
-            <!-- Bottom Minimized Windows Dock Container -->
-            <StackPanel Grid.Row="1" x:Name="MinimizedBar" Orientation="Horizontal" VerticalAlignment="Bottom" Height="26" Margin="2,0,2,2">
-                
-                <!-- Minimized Production Form -->
-                <Border x:Name="minProdWindow" Width="160" Height="24" Background="#D4D0C8" BorderBrush="#808080" BorderThickness="1" Margin="0,0,2,0" Visibility="Collapsed">
-                    <Grid Margin="2,0">
-                        <TextBlock Text="Production Form" FontSize="11" VerticalAlignment="Center" Margin="2,0,0,0"/>
-                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
-                            <Button Content="❐" Width="16" Height="16" FontSize="8" Margin="1" Click="btnRestoreProduction_Click"/>
-                            <Button Content="□" Width="16" Height="16" FontSize="8" Margin="1" Click="btnRestoreProduction_Click"/>
-                            <Button Content="X" Width="16" Height="16" FontSize="8" FontWeight="Bold" Margin="1" Click="btnCloseProduction_Click"/>
-                        </StackPanel>
-                    </Grid>
-                </Border>
-
-                <!-- Minimized Card Front -->
-                <Border x:Name="minCardFrontWindow" Width="160" Height="24" Background="#D4D0C8" BorderBrush="#808080" BorderThickness="1" Margin="0,0,2,0" Visibility="Collapsed">
-                    <Grid Margin="2,0">
-                        <TextBlock Text="Card" FontSize="11" VerticalAlignment="Center" Margin="2,0,0,0"/>
-                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
-                            <Button Content="❐" Width="16" Height="16" FontSize="8" Margin="1" Click="btnRestoreCardFront_Click"/>
-                            <Button Content="□" Width="16" Height="16" FontSize="8" Margin="1" Click="btnRestoreCardFront_Click"/>
-                            <Button Content="X" Width="16" Height="16" FontSize="8" FontWeight="Bold" Margin="1" Click="btnCloseCardFront_Click"/>
-                        </StackPanel>
-                    </Grid>
-                </Border>
-
-                <!-- Minimized Card Back -->
-                <Border x:Name="minCardBackWindow" Width="160" Height="24" Background="#D4D0C8" BorderBrush="#808080" BorderThickness="1" Margin="0,0,2,0" Visibility="Collapsed">
-                    <Grid Margin="2,0">
-                        <TextBlock Text="Card (back side)" FontSize="11" VerticalAlignment="Center" Margin="2,0,0,0"/>
-                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
-                            <Button Content="❐" Width="16" Height="16" FontSize="8" Margin="1" Click="btnRestoreCardBack_Click"/>
-                            <Button Content="□" Width="16" Height="16" FontSize="8" Margin="1" Click="btnRestoreCardBack_Click"/>
-                            <Button Content="X" Width="16" Height="16" FontSize="8" FontWeight="Bold" Margin="1" Click="btnCloseCardBack_Click"/>
-                        </StackPanel>
-                    </Grid>
-                </Border>
-
-                <!-- Minimized Report Design -->
-                <Border x:Name="minReportWindow" Width="160" Height="24" Background="#D4D0C8" BorderBrush="#808080" BorderThickness="1" Margin="0,0,2,0" Visibility="Collapsed">
-                    <Grid Margin="2,0">
-                        <TextBlock Text="Report Design" FontSize="11" VerticalAlignment="Center" Margin="2,0,0,0"/>
-                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
-                            <Button Content="❐" Width="16" Height="16" FontSize="8" Margin="1" Click="btnRestoreReport_Click"/>
-                            <Button Content="□" Width="16" Height="16" FontSize="8" Margin="1" Click="btnRestoreReport_Click"/>
-                            <Button Content="X" Width="16" Height="16" FontSize="8" FontWeight="Bold" Margin="1" Click="btnCloseReport_Click"/>
-                        </StackPanel>
-                    </Grid>
-                </Border>
-
-            </StackPanel>
-        </Grid>
+        <!-- Main Workspace Canvas Area -->
+        <Grid Background="#7F7F7F"/>
     </DockPanel>
 </Window>
