@@ -6,8 +6,9 @@
         Background="#808080">
 
     <DockPanel>
-        <!-- Top Menu Bar -->
+        <!-- Dynamic Menu Bar -->
         <Menu DockPanel.Dock="Top" Height="24" Background="#F0F0F0">
+            <!-- File Menu (Always Visible) -->
             <MenuItem Header="_File">
                 <MenuItem Header="_New Project..." Click="NewProject_Click"/>
                 <MenuItem Header="_Open Project..." Click="OpenProject_Click"/>
@@ -18,12 +19,26 @@
                 <Separator/>
                 <MenuItem Header="E_xit" Click="Exit_Click"/>
             </MenuItem>
-            <MenuItem Header="_Edit"/>
+
+            <!-- Edit Menu (Project ဖွင့်မှ ပေါ်မည်) -->
+            <MenuItem x:Name="menuEdit" Header="_Edit" Visibility="Collapsed"/>
+
+            <!-- View Menu (Always Visible) -->
             <MenuItem Header="_View"/>
-            <MenuItem Header="_Insert"/>
-            <MenuItem Header="_Format"/>
-            <MenuItem Header="_Tools"/>
-            <MenuItem Header="_Window"/>
+
+            <!-- Insert Menu (Project ဖွင့်မှ ပေါ်မည်) -->
+            <MenuItem x:Name="menuInsert" Header="_Insert" Visibility="Collapsed"/>
+
+            <!-- Format Menu (Project ဖွင့်မှ ပေါ်မည်) -->
+            <MenuItem x:Name="menuFormat" Header="_Format" Visibility="Collapsed"/>
+
+            <!-- Tools Menu (Project ဖွင့်မှ ပေါ်မည်) -->
+            <MenuItem x:Name="menuTools" Header="_Tools" Visibility="Collapsed"/>
+
+            <!-- Window Menu (Project ဖွင့်မှ ပေါ်မည်) -->
+            <MenuItem x:Name="menuWindow" Header="_Window" Visibility="Collapsed"/>
+
+            <!-- Help Menu (Always Visible) -->
             <MenuItem Header="_Help"/>
         </Menu>
 
