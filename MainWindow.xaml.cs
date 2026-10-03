@@ -7,20 +7,17 @@ namespace IDCardStudio
         public MainWindow()
         {
             InitializeComponent();
-            // ပထမအဆင့် (Initial State) ဖြင့် စတင်မည်
             SetProjectOpenState(false);
         }
 
         private void NewProject_Click(object sender, RoutedEventArgs e)
         {
-            // New Project စတင်လိုက်သောအခါ မီနူးများ အားလုံးကို တတိယပုံအတိုင်း ပွင့်စေမည်
             SetProjectOpenState(true);
             this.Title = "Datacard ID Works Enterprise Designer - [Sample.iwp]";
         }
 
         private void CloseProject_Click(object sender, RoutedEventArgs e)
         {
-            // Project ပိတ်လိုက်ပါက ပထမအဆင့် မီနူးများအတိုင်း ပြန်ဖြစ်သွားမည်
             SetProjectOpenState(false);
             this.Title = "Datacard ID Works Enterprise Designer";
         }
@@ -30,26 +27,32 @@ namespace IDCardStudio
             SetProjectOpenState(true);
         }
 
+        // Error ဖြစ်စေသော ပျောက်ဆုံးနေသည့် Method ၂ ခု
+        private void SaveProject_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("Save Project feature clicked.", "Save Project", MessageBoxButton.OK, MessageBoxImage.Information);
+        }
+
+        private void SaveProjectAs_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("Save Project As feature clicked.", "Save Project As", MessageBoxButton.OK, MessageBoxImage.Information);
+        }
+
         private void Exit_Click(object sender, RoutedEventArgs e)
         {
             Application.Current.Shutdown();
         }
 
-        /// <summary>
-        /// Project ပွင့်နေချိန် နှင့် မပွင့်သေးချိန် မီနူးများ၏ Visibility ကို ထိန်းချုပ်သည့် Function
-        /// </summary>
         private void SetProjectOpenState(bool isOpen)
         {
             Visibility state = isOpen ? Visibility.Visible : Visibility.Collapsed;
 
-            // 1. Menu Bar ပေါ်မှ Main Menus များ ပြသ/ဖျောက် လုပ်ခြင်း
             EditMenu.Visibility = state;
             InsertMenu.Visibility = state;
             FormatMenu.Visibility = state;
             ToolsMenu.Visibility = state;
             WindowMenu.Visibility = state;
 
-            // 2. File Menu အတွင်းမှ Extra Items များ ပြသ/ဖျောက် လုပ်ခြင်း
             menuCloseProject.Visibility = state;
             sep1.Visibility = state;
             menuSaveProject.Visibility = state;
@@ -63,7 +66,6 @@ namespace IDCardStudio
             sep4.Visibility = state;
             menuDeleteProject.Visibility = state;
 
-            // 3. View Menu အတွင်းမှ Extra Items များ ပြသ/ဖျောက် လုပ်ခြင်း
             sepView1.Visibility = state;
             menuFieldNames.Visibility = state;
             menuSampleData.Visibility = state;
