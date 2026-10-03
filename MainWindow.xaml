@@ -8,14 +8,10 @@
     <DockPanel>
         <!-- Dynamic Menu Bar -->
         <Menu DockPanel.Dock="Top" Height="24" Background="#F0F0F0">
-            <!-- File Menu (Always Visible) -->
+            <!-- File Menu -->
             <MenuItem Header="_File">
                 <MenuItem Header="_New Project..." Click="NewProject_Click"/>
                 <MenuItem Header="_Open Project..." Click="OpenProject_Click"/>
-                <MenuItem Header="_Close Project" Click="CloseProject_Click"/>
-                <Separator/>
-                <MenuItem Header="_Save Project" Click="SaveProject_Click"/>
-                <MenuItem Header="Save Project _As..." Click="SaveProjectAs_Click"/>
                 <Separator/>
                 <MenuItem Header="E_xit" Click="Exit_Click"/>
             </MenuItem>
