@@ -16,9 +16,6 @@
                 <Separator/>
                 <MenuItem Header="Recent File" IsEnabled="False"/>
                 <Separator/>
-                <MenuItem x:Name="SaveMenuItem" Header="_Save" IsEnabled="False"/>
-                <MenuItem x:Name="SaveAsMenuItem" Header="Save _As..." IsEnabled="False"/>
-                <Separator/>
                 <MenuItem Header="E_xit" Click="Exit_Click"/>
             </MenuItem>
 
