@@ -8,9 +8,10 @@
         FontFamily="Segoe UI" FontSize="12">
 
     <Grid Margin="12">
+        <!-- ColumnDefinitions ဟု စာလုံးအမှန်ပြင်ထားပါသည် -->
         <Grid.ColumnDefinitions>
-            <Grid.ColumnDefinition Width="*"/>
-            <Grid.ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="Auto"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
