@@ -59,9 +59,6 @@ namespace IDCardStudio
                 InsertMenu.Visibility = Visibility.Visible;
                 FormatMenu.Visibility = Visibility.Visible;
                 WindowMenu.Visibility = Visibility.Visible;
-
-                SaveMenuItem.IsEnabled = true;
-                SaveAsMenuItem.IsEnabled = true;
             }
         }
 
