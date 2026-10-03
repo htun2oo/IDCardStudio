@@ -16,10 +16,10 @@ namespace IDCardStudio
 
             if (dialog.ShowDialog() == true)
             {
-                // Window Title ပြောင်းလဲခြင်း
+                // Window Title ကို ပြောင်းလဲသတ်မှတ်ပေးခြင်း
                 this.Title = $"Datacard ID Works Enterprise Designer - {dialog.ProjectName} - [Card]";
 
-                // 1. Production Form ပေါ်လာစေရန်
+                // Production Form Design ရွေးထားပါက ပြသပေးမည်
                 if (dialog.IsProductionFormSelected)
                 {
                     pnlProductionForm.Visibility = Visibility.Visible;
@@ -29,7 +29,7 @@ namespace IDCardStudio
                     pnlProductionForm.Visibility = Visibility.Collapsed;
                 }
 
-                // 2. Card Design (Card & Card back side) ပေါ်လာစေရန်
+                // Card Design ရွေးထားပါက Card နှင့် Card (back side) ကို ပြသပေးမည်
                 if (dialog.IsCardDesignSelected)
                 {
                     pnlCardContainer.Visibility = Visibility.Visible;
@@ -41,10 +41,25 @@ namespace IDCardStudio
             }
         }
 
-        private void OpenProject_Click(object sender, RoutedEventArgs e) { }
-        private void CloseProject_Click(object sender, RoutedEventArgs e) { }
-        private void SaveProject_Click(object sender, RoutedEventArgs e) { }
-        private void SaveProjectAs_Click(object sender, RoutedEventArgs e) { }
+        private void OpenProject_Click(object sender, RoutedEventArgs e)
+        {
+            // Open Project Event Handler
+        }
+
+        private void CloseProject_Click(object sender, RoutedEventArgs e)
+        {
+            // Close Project Event Handler
+        }
+
+        private void SaveProject_Click(object sender, RoutedEventArgs e)
+        {
+            // Save Project Event Handler
+        }
+
+        private void SaveProjectAs_Click(object sender, RoutedEventArgs e)
+        {
+            // Save Project As Event Handler
+        }
 
         private void Exit_Click(object sender, RoutedEventArgs e)
         {
