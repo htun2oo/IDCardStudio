@@ -39,7 +39,7 @@ namespace IDCardStudio
                 {
                     if (dialog.IsLandscape)
                     {
-                        // CR80 Landscape Size (Width: 238, Height: 150)
+                        // CR80 Landscape Size
                         CardFrontCanvas.Width = 238;
                         CardFrontCanvas.Height = 150;
                         CardBackCanvas.Width = 238;
@@ -47,7 +47,7 @@ namespace IDCardStudio
                     }
                     else
                     {
-                        // CR80 Portrait Size (Width: 150, Height: 238)
+                        // CR80 Portrait Size
                         CardFrontCanvas.Width = 150;
                         CardFrontCanvas.Height = 238;
                         CardBackCanvas.Width = 150;
@@ -55,9 +55,11 @@ namespace IDCardStudio
                     }
                 }
 
+                // New Project ဖွင့်လိုက်လျှင် Hidden Menus များကို ပြသပေးခြင်း
                 EditMenu.Visibility = Visibility.Visible;
                 InsertMenu.Visibility = Visibility.Visible;
                 FormatMenu.Visibility = Visibility.Visible;
+                ToolsMenu.Visibility = Visibility.Visible;
                 WindowMenu.Visibility = Visibility.Visible;
             }
         }
@@ -65,6 +67,27 @@ namespace IDCardStudio
         private void OpenProject_Click(object sender, RoutedEventArgs e)
         {
             MessageBox.Show("Open Project feature will be implemented.", "Open Project", MessageBoxButton.OK, MessageBoxImage.Information);
+        }
+
+        private void CloseProject_Click(object sender, RoutedEventArgs e)
+        {
+            WorkspaceGrid.Visibility = Visibility.Collapsed;
+            EditMenu.Visibility = Visibility.Collapsed;
+            InsertMenu.Visibility = Visibility.Collapsed;
+            FormatMenu.Visibility = Visibility.Collapsed;
+            ToolsMenu.Visibility = Visibility.Collapsed;
+            WindowMenu.Visibility = Visibility.Collapsed;
+            this.Title = "Datacard ID Works Enterprise Designer";
+        }
+
+        private void SaveProject_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("Save Project feature will be implemented.", "Save Project", MessageBoxButton.OK, MessageBoxImage.Information);
+        }
+
+        private void SaveProjectAs_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("Save Project As feature will be implemented.", "Save Project As", MessageBoxButton.OK, MessageBoxImage.Information);
         }
 
         private void Exit_Click(object sender, RoutedEventArgs e)
