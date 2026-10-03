@@ -10,8 +10,10 @@
         <Menu DockPanel.Dock="Top" Height="24" Background="#F0F0F0">
             <!-- File Menu -->
             <MenuItem Header="_File">
-                <MenuItem Header="_New Project..." Click="NewProject_Click"/>
-                <MenuItem Header="_Open Project..." Click="OpenProject_Click"/>
+                <MenuItem Header="_New Project..." InputGestureText="Ctrl+N" Click="NewProject_Click"/>
+                <MenuItem Header="_Open Project..." InputGestureText="Ctrl+O" Click="OpenProject_Click"/>
+                <Separator/>
+                <MenuItem Header="Recent File" IsEnabled="False"/>
                 <Separator/>
                 <MenuItem Header="E_xit" Click="Exit_Click"/>
             </MenuItem>
