@@ -12,31 +12,31 @@
             
             <!-- 1. File Menu -->
             <MenuItem Header="_File">
-    <MenuItem Header="_New Project..." InputGestureText="Ctrl+N" Click="NewProject_Click"/>
-    <MenuItem Header="_Open Project..." InputGestureText="Ctrl+O" Click="OpenProject_Click"/>
-    
-    <!-- Project Open ဖြစ်မှသာ မြင်ရမည့် File Items များ -->
-    <MenuItem x:Name="menuCloseProject" Header="_Close Project" Click="CloseProject_Click" Visibility="Collapsed"/>
-    <Separator x:Name="sep1" Visibility="Collapsed"/>
-    <MenuItem x:Name="menuSaveProject" Header="_Save Project" InputGestureText="Ctrl+S" Click="SaveProject_Click" Visibility="Collapsed"/>
-    <MenuItem x:Name="menuSaveProjectAs" Header="Save Project _As..." Click="SaveProjectAs_Click" Visibility="Collapsed"/>
-    <Separator x:Name="sep2" Visibility="Collapsed"/>
-    <MenuItem x:Name="menuProjectProperties" Header="Project _Properties..." InputGestureText="F7" Visibility="Collapsed"/>
-    <Separator x:Name="sep3" Visibility="Collapsed"/>
-    <MenuItem x:Name="menuPrintSampleCard" Header="_Print Sample Card..." InputGestureText="Ctrl+P" Visibility="Collapsed"/>
-    <MenuItem x:Name="menuPreviewSampleReport" Header="Preview Sample _Report..." IsEnabled="False" Visibility="Collapsed"/>
-    <MenuItem x:Name="menuReportPageSetup" Header="Report Page Set_up..." IsEnabled="False" Visibility="Collapsed"/>
-    <Separator x:Name="sep4" Visibility="Collapsed"/>
-    <MenuItem x:Name="menuDeleteProject" Header="_Delete Project" Visibility="Collapsed"/>
-    
-    <Separator x:Name="sep5"/>
-    
-    <!-- ပြောင်းလဲလိုက်သော Recent File Line (Disabled/Grayed out) -->
-    <MenuItem Header="Recent File" IsEnabled="False"/>
-    
-    <Separator/>
-    <MenuItem Header="E_xit" Click="Exit_Click"/>
-</MenuItem>
+                <MenuItem Header="_New Project..." InputGestureText="Ctrl+N" Click="NewProject_Click"/>
+                <MenuItem Header="_Open Project..." InputGestureText="Ctrl+O" Click="OpenProject_Click"/>
+                
+                <!-- Project Open ဖြစ်မှသာ မြင်ရမည့် File Items များ -->
+                <MenuItem x:Name="menuCloseProject" Header="_Close Project" Click="CloseProject_Click" Visibility="Collapsed"/>
+                <Separator x:Name="sep1" Visibility="Collapsed"/>
+                <MenuItem x:Name="menuSaveProject" Header="_Save Project" InputGestureText="Ctrl+S" Click="SaveProject_Click" Visibility="Collapsed"/>
+                <MenuItem x:Name="menuSaveProjectAs" Header="Save Project _As..." Click="SaveProjectAs_Click" Visibility="Collapsed"/>
+                <Separator x:Name="sep2" Visibility="Collapsed"/>
+                <MenuItem x:Name="menuProjectProperties" Header="Project _Properties..." InputGestureText="F7" Visibility="Collapsed"/>
+                <Separator x:Name="sep3" Visibility="Collapsed"/>
+                <MenuItem x:Name="menuPrintSampleCard" Header="_Print Sample Card..." InputGestureText="Ctrl+P" Visibility="Collapsed"/>
+                <MenuItem x:Name="menuPreviewSampleReport" Header="Preview Sample _Report..." IsEnabled="False" Visibility="Collapsed"/>
+                <MenuItem x:Name="menuReportPageSetup" Header="Report Page Set_up..." IsEnabled="False" Visibility="Collapsed"/>
+                <Separator x:Name="sep4" Visibility="Collapsed"/>
+                <MenuItem x:Name="menuDeleteProject" Header="_Delete Project" Visibility="Collapsed"/>
+                
+                <Separator x:Name="sep5"/>
+                
+                <!-- Recent File (Disabled/Grayed out) -->
+                <MenuItem x:Name="menuRecentFile" Header="Recent File" IsEnabled="False"/>
+                
+                <Separator/>
+                <MenuItem Header="E_xit" Click="Exit_Click"/>
+            </MenuItem>
 
             <!-- 2. Edit Menu (New Project ဖွင့်မှသာ ပေါ်မည်) -->
             <MenuItem x:Name="EditMenu" Header="_Edit" Visibility="Collapsed">
