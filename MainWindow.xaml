@@ -67,7 +67,7 @@
         <!-- Main Workspace Area -->
         <Grid x:Name="WorkspaceGrid" Background="#808080" Margin="4">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition x:Name="colLeft" Width="280"/>
+                <ColumnDefinition x:Name="colLeft" Width="350"/>
                 <ColumnDefinition Width="4"/>
                 <ColumnDefinition x:Name="colRight" Width="*"/>
             </Grid.ColumnDefinitions>
@@ -91,10 +91,14 @@
                                 <Button Content="✕" Width="16" Height="15" FontSize="8" Margin="1,0" Foreground="Red"/>
                             </StackPanel>
                         </Grid>
-                        <!-- Card View Area -->
-                        <Border Background="White" Margin="4" BorderBrush="#A0A0A0" BorderThickness="1">
-                            <Canvas x:Name="cvsCardFront" Background="White"/>
-                        </Border>
+                        <!-- Card View Area (ISO ID-1 Size: 85.60 mm x 53.98 mm -> ~323.5 x ~204.0 px) -->
+                        <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" Background="#D0D0D0">
+                            <Viewbox Margin="10" VerticalAlignment="Center" HorizontalAlignment="Center">
+                                <Border Background="White" BorderBrush="#A0A0A0" BorderThickness="1" CornerRadius="2">
+                                    <Canvas x:Name="cvsCardFront" Width="323.5" Height="204.0" Background="White"/>
+                                </Border>
+                            </Viewbox>
+                        </ScrollViewer>
                     </DockPanel>
                 </Border>
 
@@ -110,10 +114,14 @@
                                 <Button Content="✕" Width="16" Height="15" FontSize="8" Margin="1,0" Foreground="Red"/>
                             </StackPanel>
                         </Grid>
-                        <!-- Card Back View Area -->
-                        <Border Background="White" Margin="4" BorderBrush="#A0A0A0" BorderThickness="1">
-                            <Canvas x:Name="cvsCardBack" Background="White"/>
-                        </Border>
+                        <!-- Card Back View Area (ISO ID-1 Size: 85.60 mm x 53.98 mm -> ~323.5 x ~204.0 px) -->
+                        <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" Background="#D0D0D0">
+                            <Viewbox Margin="10" VerticalAlignment="Center" HorizontalAlignment="Center">
+                                <Border Background="White" BorderBrush="#A0A0A0" BorderThickness="1" CornerRadius="2">
+                                    <Canvas x:Name="cvsCardBack" Width="323.5" Height="204.0" Background="White"/>
+                                </Border>
+                            </Viewbox>
+                        </ScrollViewer>
                     </DockPanel>
                 </Border>
             </Grid>
