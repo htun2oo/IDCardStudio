@@ -102,7 +102,7 @@ namespace IDCardStudio
             menuRecentFilePath.Visibility = vis;
         }
 
-        // Shortcut Keys များ နှိပ်လိုက်ပါက အလုပ်လုပ်မည့် Handler များ
+        // Shortcut Keys များ နှိပ်လိုက်ပါက အလုပ်လုပ်မည့် Event Handler များ
         private void OpenProject_Click(object sender, RoutedEventArgs e) { }
         private void SaveProject_Click(object sender, RoutedEventArgs e) { }
         private void SaveProjectAs_Click(object sender, RoutedEventArgs e) { }
