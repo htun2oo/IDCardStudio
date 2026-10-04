@@ -26,7 +26,7 @@ namespace IDCardStudio
                 menuTools.Visibility = Visibility.Visible;
                 menuWindow.Visibility = Visibility.Visible;
 
-                // Project ဖွင့်လိုက်သည့်အခါ File Menu အောက်ရှိ Items များကို ဒုတိယပုံပါအတိုင်း ပြောင်းလဲပေးခြင်း
+                // Project ဖွင့်လိုက်သည့်အခါ File Menu အောက်ရှိ Items များကို ပြောင်းလဲပေးခြင်း
                 SetFileMenuForProjectOpen(true);
 
                 // Production Form Design ရွေးထားပါက ပြသပေးမည်
