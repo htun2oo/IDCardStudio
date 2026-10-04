@@ -37,7 +37,8 @@ namespace IDCardStudio
                 menuWindow.Visibility = Visibility.Visible;
 
                 // Project ဖွင့်လိုက်သည့်အခါ File Menu အောက်ရှိ Items များကို ပြောင်းလဲပေးခြင်း
-                SetFileMenuForProjectOpen(true);
+                // ရွေးချယ်ခဲ့သော ProjectName ဖြင့် Recent File Path ကို Dynamically သတ်မှတ်ပေးသည်
+                SetFileMenuForProjectOpen(true, dialog.ProjectName);
 
                 // Production Form Design ရွေးထားပါက ပြသပေးမည်
                 if (dialog.IsProductionFormSelected)
@@ -77,7 +78,7 @@ namespace IDCardStudio
             SetFileMenuForProjectOpen(false);
         }
 
-        private void SetFileMenuForProjectOpen(bool isOpen)
+        private void SetFileMenuForProjectOpen(bool isOpen, string projectName = "")
         {
             Visibility vis = isOpen ? Visibility.Visible : Visibility.Collapsed;
 
@@ -97,8 +98,14 @@ namespace IDCardStudio
             menuDeleteProject.Visibility = vis;
             sep5.Visibility = vis;
 
-            // Project ဖွင့်ထားချိန်တွင် Recent File (Disabled) ကို ဖျောက်ပြီး Path ဖြင့် ပေါ်စေမည်
+            // Project ဖွင့်ထားချိန်တွင် Recent File (Disabled) ကို ဖျောက်ပြီး Dynamic Project Path ဖြင့် ပေါ်စေမည်
             menuRecentFileDisabled.Visibility = isOpen ? Visibility.Collapsed : Visibility.Visible;
+            
+            if (isOpen && !string.IsNullOrEmpty(projectName))
+            {
+                menuRecentFilePath.Header = $"1 C:\\Users\\...\\{projectName}\\{projectName}.iwp";
+            }
+            
             menuRecentFilePath.Visibility = vis;
         }
 
